@@ -1,0 +1,214 @@
+﻿<Window x:Class="HelaMedical.Generate_A_Report"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelaMedical"
+        mc:Ignorable="d"
+        Title="HelaMedical Формирование отчета" Height="1080" Width="1920" WindowState="Maximized">
+    <Window.Resources>
+       
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="659*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Label Content="Вид зависимости"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Label Content="Регион"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Label Content="Пол"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Label Content="Семейный статус"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Label Content="Кол-во детей"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Label Content="Состав семьи"/>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Label Content="Уровень образования"/>
+            </Grid>
+            <Grid Grid.Row="7">
+                <Label Content="Год постановки на учет"/>
+            </Grid>
+            <Grid Grid.Row="8">
+                <Label Content="Год смерти"/>
+            </Grid>
+            <Grid Grid.Row="9">
+                <Button Content="Выгрузить в Excel"
+                        Name="Excel"
+                        Style="{StaticResource Button}"
+                        Click="Excel_Click"/>
+            </Grid>
+            <Grid Grid.Row="10">
+                <Button Content="Построить диаграммы"
+                        Name ="Diagramm"
+                        Style="{StaticResource Button}"
+                        Click="Diagramm_Click"/>
+            </Grid>
+            <Grid Grid.Row="11">
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <ComboBox Name ="TypeOfAddiction">
+                    <TextBlock Text="Алкогольная"/>
+                    <TextBlock Text="Наркотическая"/>
+                    <TextBlock Text="Полизависимость"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ComboBox Name ="RegionCenterBLR">
+                    <TextBlock Text="Минская обл"/>
+                    <TextBlock Text="Бресткая обл"/>
+                    <TextBlock Text="Витебская обл"/>
+                    <TextBlock Text="Гродненская обл"/>
+                    <TextBlock Text="Гомельская обл"/>
+                    <TextBlock Text="Могилевская обл"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <ComboBox Name ="Sex">
+                    <TextBlock Text="Мужской"/>
+                    <TextBlock Text="Женский"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="3">
+                <ComboBox Name ="FamilyStatus">
+                    <TextBlock Text ="Холост"/>
+                    <TextBlock Text ="Разведен"/>
+                    <TextBlock Text ="В браке"/>
+                    <TextBlock Text ="Второй и последующий брак"/>
+                    <TextBlock Text ="Вдовец/Вдова"/>
+                    <TextBlock Text ="Гражданский брак(сожительство)"/>
+                    <TextBlock Text ="Не уточнено"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="4">
+                <ComboBox Name ="CostOfKids">
+                    <TextBlock Text ="1"/>
+                    <TextBlock Text ="2"/>
+                    <TextBlock Text =">2"/>
+                    <TextBlock Text ="Нет"/>
+                    <TextBlock Text ="Не уточнено"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="5">
+                <ComboBox Name="FamilyComposition">
+                    <TextBlock Text ="Проживал один/одна"/>
+                    <TextBlock Text ="Проживал вместе с детьми"/>
+                    <TextBlock Text ="Проживал с партнером"/>
+                    <TextBlock Text ="Проживал с родителями"/>
+                    <TextBlock Text ="Проживал с одим родителям"/>
+                    <TextBlock Text ="Другое"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="6">
+                <ComboBox Name ="Education">
+                    <TextBlock Text = "Начальное"/>
+                    <TextBlock Text = "Незаконченное среднее (Базовое)"/>
+                    <TextBlock Text = "Среднее полное"/>
+                    <TextBlock Text = "Среднее специальное (Колледж, Техникум)"/>
+                    <TextBlock Text = "Незаконченное высшее"/>
+                    <TextBlock Text = "Высшее"/>
+                    <TextBlock Text = "Высшее продвинутое(2-ое высшее, аспирантура)"/>
+                    <TextBlock Text = "Не уточнено"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="7">
+                <TextBox Name="PeriodS"/>
+            </Grid>
+            <Grid Grid.Row="8">
+                <TextBox Name="PeriodPo"/>
+            </Grid>
+            <Grid Grid.Row="9">
+                <Button Name="Update" 
+                        IsEnabled="{Binding ElementName=TypeOfAddiction, Path=Text.Length}"
+                        Content="Создать"
+                        Style="{StaticResource Button}"
+                        Click="Update_Click"/>
+            </Grid>
+            <Grid Grid.Row="10">
+                <Button Content="Назад"
+                        Style="{StaticResource Button}"
+                        Name="Back"
+                        Click="Back_Click"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <DataGrid x:Name="DataGrid" 
+                      HorizontalGridLinesBrush="DarkGray"
+                      RowBackground="LightGray" 
+                      AlternatingRowBackground="White" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="10" 
+                      RowHeaderWidth="50"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" 
+                                    Binding="{Binding Path=Id}"
+                                    Width="45"/>
+                    <DataGridTextColumn Header="ФИО" 
+                                    Binding="{Binding Path=FIO}"
+                                    Width="*"/>
+                    <DataGridHyperlinkColumn Header="Возраст"
+                                         Binding="{Binding Path=Date}" 
+                                         Width="55"/>
+                    <DataGridHyperlinkColumn Header="Адрес проживание"
+                                         Binding="{Binding Path=Age}" 
+                                         Width="*"/>
+                    <DataGridHyperlinkColumn Header="Образование"
+                                         Binding="{Binding Path=Education}" 
+                                         Width="*"/>
+
+                    <DataGridHyperlinkColumn Header="Наркодиагноз"
+                                         Binding="{Binding Path=DrugDiagnosisAlc}" 
+                                         Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

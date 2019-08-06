@@ -1,0 +1,1051 @@
+﻿<Window x:Class="HelaMedical.OblReg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HelaMedical"
+        mc:Ignorable="d"
+        Title="OblReg" WindowState="Maximized" Width="1200" Height="1050">
+    <Grid>
+        <ScrollViewer Name="scroll" 
+                      CanContentScroll="True"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label  Content="Бресткая обл"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <RadioButton Name ="Brest1"
+                             Content="Барановичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest1_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <RadioButton Name ="Brest2"
+                             Content="Берёзовский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest2_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <RadioButton Name ="Brest3"
+                             Content="Брестский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest3_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <RadioButton Name ="Brest4"
+                             Content="Ганцевичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest4_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <RadioButton Name ="Brest5"
+                             Content="Дрогичинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest5_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <RadioButton Name ="Brest6"
+                             Content="Жабинковский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest6_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <RadioButton Name ="Brest7"
+                             Content="Ивановский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest7_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <RadioButton Name ="Brest8"
+                             Content="Ивацевичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest8_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <RadioButton Name ="Brest9"
+                             Content="Каменецкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest9_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <RadioButton Name ="Brest10"
+                             Content="Кобринский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest10_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <RadioButton Name ="Brest11"
+                             Content="Лунинецкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest11_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <RadioButton Name ="Brest12"
+                             Content="Ляховичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest12_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <RadioButton Name ="Brest13"
+                             Content="Малоритский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest13_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <RadioButton Name ="Brest14"
+                             Content="Пинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest14_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <RadioButton Name ="Brest15"
+                             Content="Пружанский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest15_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="16">
+                        <RadioButton Name ="Brest16"
+                             Content="Столинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Brest16_Checked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="Витебская обл"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <RadioButton Name ="Vitebsk1"
+                             Content="Бешенковичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk1_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <RadioButton Name ="Vitebsk2"
+                             Content="Браславский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk2_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <RadioButton Name ="Vitebsk3"
+                             Content="Верхнедвинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk3_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <RadioButton Name ="Vitebsk4"
+                             Content="Витебский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk4_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <RadioButton Name ="Vitebsk5"
+                             Content="Глубокский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk5_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <RadioButton Name ="Vitebsk6"
+                             Content="Городокский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk6_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <RadioButton Name ="Vitebsk7"
+                             Content="Докшицкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk7_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <RadioButton Name ="Vitebsk8"
+                             Content="Дубровенский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk8_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <RadioButton Name ="Vitebsk9"
+                             Content="Лепельский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk9_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <RadioButton Name ="Vitebsk10"
+                             Content="Лиозненский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk10_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <RadioButton Name ="Vitebsk11"
+                             Content="Миорский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk11_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <RadioButton Name ="Vitebsk12"
+                             Content="Оршанский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk12_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <RadioButton Name ="Vitebsk13"
+                             Content="Полоцкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk13_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <RadioButton Name ="Vitebsk14"
+                             Content="Поставский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk14_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <RadioButton Name ="Vitebsk15"
+                             Content="Россонский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk15_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="16">
+                        <RadioButton Name ="Vitebsk16"
+                             Content="Сенненский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk16_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="17">
+                        <RadioButton Name ="Vitebsk17"
+                             Content="Толочинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk17_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="18">
+                        <RadioButton Name ="Vitebsk18"
+                             Content="Ушачский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk18_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="19">
+                        <RadioButton Name ="Vitebsk19"
+                             Content="Чашникский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk19_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="20">
+                        <RadioButton Name ="Vitebsk20"
+                             Content="Шарковщинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk20_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="21">
+                        <RadioButton Name ="Vitebsk21"
+                             Content="Шумилинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Vitebsk21_Checked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="Гомельская обл"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <RadioButton Name ="Gomel1"
+                             Content="Брагинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel1_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <RadioButton Name ="Gomel2"
+                             Content="Буда-Кошелевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel2_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <RadioButton Name ="Gomel3"
+                             Content="Ветковский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel3_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <RadioButton Name ="Gomel4"
+                             Content="Гомельский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel4_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <RadioButton Name ="Gomel5"
+                             Content="Добрушский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel5_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <RadioButton Name ="Gomel6"
+                             Content="Ельский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel6_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <RadioButton Name ="Gomel7"
+                             Content="Житковичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel7_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <RadioButton Name ="Gomel8"
+                             Content="Жлобинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel8_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <RadioButton Name ="Gomel9"
+                             Content="Калинковичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel9_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <RadioButton Name ="Gomel10"
+                             Content="Кормянский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel10_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <RadioButton Name ="Gomel11"
+                             Content="Лельчицкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel11_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <RadioButton Name ="Gomel12"
+                             Content="Лоевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel12_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <RadioButton Name ="Gomel13"
+                             Content="Мозырский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel13_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <RadioButton Name ="Gomel14"
+                             Content="Наровлянский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel14_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <RadioButton Name ="Gomel15"
+                             Content="Октябрьский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel15_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="16">
+                        <RadioButton Name ="Gomel16"
+                             Content="Петриковский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel16_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="17">
+                        <RadioButton Name ="Gomel17"
+                             Content="Речицкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel17_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="18">
+                        <RadioButton Name ="Gomel18"
+                             Content="Рогачевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel18_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="19">
+                        <RadioButton Name ="Gomel19"
+                             Content="Светлогорский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel19_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="20">
+                        <RadioButton Name ="Gomel20"
+                             Content="Хойникский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel20_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="21">
+                        <RadioButton Name ="Gomel21"
+                             Content="Чечерский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Gomel21_Checked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="Гродненская обл" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <RadioButton Name ="Grodno1"
+                             Content="Берестовицкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno1_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <RadioButton Name ="Grodno2"
+                             Content="Волковысский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno2_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <RadioButton Name ="Grodno3"
+                             Content="Вороновский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno3_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <RadioButton Name ="Grodno4"
+                             Content="Гродненский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno4_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <RadioButton Name ="Grodno5"
+                             Content="Дятловский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno5_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <RadioButton Name ="Grodno6"
+                             Content="Зельвенский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno6_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <RadioButton Name ="Grodno7"
+                             Content="Ивьевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno7_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <RadioButton Name ="Grodno8"
+                             Content="Кореличский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno8_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <RadioButton Name ="Grodno9"
+                             Content="Лидский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno9_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <RadioButton Name ="Grodno10"
+                             Content="Мостовский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno10_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <RadioButton Name ="Grodno11"
+                             Content="Новогрудский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno11_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <RadioButton Name ="Grodno12"
+                             Content="Островецкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno12_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <RadioButton Name ="Grodno13"
+                             Content="Ошмянский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno13_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <RadioButton Name ="Grodno14"
+                             Content="Свислочский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno14_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <RadioButton Name ="Grodno15"
+                             Content="Слонимский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno15_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="16">
+                        <RadioButton Name ="Grodno16"
+                             Content="Сморгонский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno16_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="17">
+                        <RadioButton Name ="Grodno17"
+                             Content="Щучинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Grodno17_Checked"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="Минская обл"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <RadioButton Name ="Minsk1"
+                             Content="Березинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk1_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <RadioButton Name ="Minsk2"
+                             Content="Борисовский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk2_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <RadioButton Name ="Minsk3"
+                             Content="Вилейский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk3_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <RadioButton Name ="Minsk4"
+                             Content="Воложенский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk4_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <RadioButton Name ="Minsk5"
+                             Content="Дзержинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk5_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <RadioButton Name ="Minsk6"
+                             Content="Клецкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk6_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <RadioButton Name ="Minsk7"
+                             Content="Копыльский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk7_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <RadioButton Name ="Minsk8"
+                             Content="Крупский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk8_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <RadioButton Name ="Minsk9"
+                             Content="Логойский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk9_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <RadioButton Name ="Minsk10"
+                             Content="Любанский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk10_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <RadioButton Name ="Minsk11"
+                             Content="Минский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk11_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <RadioButton Name ="Minsk12"
+                             Content="Молодечненский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk12_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <RadioButton Name ="Minsk13"
+                             Content="Мядельский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk13_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <RadioButton Name ="Minsk14"
+                             Content="Несвижский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk14_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <RadioButton Name ="Minsk15"
+                             Content="Пуховичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk15_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="16">
+                        <RadioButton Name ="Minsk16"
+                             Content="Слуцкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk16_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="17">
+                        <RadioButton Name ="Minsk17"
+                             Content="Смолевичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk17_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="18">
+                        <RadioButton Name ="Minsk18"
+                             Content="Солигорский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk18_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="19">
+                        <RadioButton Name ="Minsk19"
+                             Content="Стародорожский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk19_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="20">
+                        <RadioButton Name ="Minsk20"
+                             Content="Столбцовский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk20_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="21">
+                        <RadioButton Name ="Minsk21"
+                             Content="Узденский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk21_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="22">
+                        <RadioButton Name ="Minsk22"
+                             Content="Червенский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Minsk22_Checked"/>
+                    </Grid>
+                    
+                </Grid>
+                <Grid Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="Могилевская обл"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <RadioButton Name ="Mogilev1"
+                             Content="Белыничский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev1_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <RadioButton Name ="Mogilev2"
+                             Content="Бобруйский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev2_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <RadioButton Name ="Mogilev3"
+                             Content="Быховский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev3_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <RadioButton Name ="Mogilev4"
+                             Content="Глусский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev4_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <RadioButton Name ="Mogilev5"
+                             Content="Горецкий"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev5_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <RadioButton Name ="Mogilev6"
+                             Content="Дрибинский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev6_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <RadioButton Name ="Mogilev7"
+                             Content="Кировский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev7_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="8">
+                        <RadioButton Name ="Mogilev8"
+                             Content="Климовичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev8_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <RadioButton Name ="Mogilev9"
+                             Content="Кличевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev9_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="10">
+                        <RadioButton Name ="Mogilev10"
+                             Content="Костюковичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev10_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <RadioButton Name ="Mogilev11"
+                             Content="Краснопольский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev11_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="12">
+                        <RadioButton Name ="Mogilev12"
+                             Content="Кричевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev12_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <RadioButton Name ="Mogilev13"
+                             Content="Круглянский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev13_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="14">
+                        <RadioButton Name ="Mogilev14"
+                             Content="Могилевский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev14_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <RadioButton Name ="Mogilev15"
+                             Content="Мстиславский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev15_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="16">
+                        <RadioButton Name ="Mogilev16"
+                             Content="Осиповичский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev16_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="17">
+                        <RadioButton Name ="Mogilev17"
+                             Content="Славгородский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev17_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="18">
+                        <RadioButton Name ="Mogilev18"
+                             Content="Хотимский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev18_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="19">
+                        <RadioButton Name ="Mogilev19"
+                             Content="Чаусский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev19_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="20">
+                        <RadioButton Name ="Mogilev20"
+                             Content="Чериковский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev20_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="21">
+                        <RadioButton Name ="Mogilev21"
+                             Content="Шкловский"
+                             Style="{StaticResource RadioButton}"
+                             GroupName="OblReg"
+                             Checked="Mogilev21_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="23">
+                        <Button Name ="Next"
+                        Content="Выбрать"
+                        Margin="10,10"
+                        Click="Next_Click"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
