@@ -85,6 +85,7 @@ namespace HelaMedical.Class
         public string AgeOfDead { get; set; }
         public string AgeOfRegistration { get; set; }
 
+        public string DataInfo { get; set; }//год постановки
         public string Registrotor { get; set; }
 
         public static List<Narcoman> Drug_Addiction = new List<Narcoman>();

@@ -143,8 +143,8 @@ namespace HelaMedical
                     alcoFindPerson.Add(Alco.AlcoholismPersona[i]);
                 }
             }
-            
-            for (int i = 0; i < Narcoman.Drug_Addiction.Count; i ++)
+
+            for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
             {
                 if (findperson == Narcoman.Drug_Addiction[i].FIO)
                 {
@@ -152,7 +152,7 @@ namespace HelaMedical
                     narcoFindPerson.Add(Narcoman.Drug_Addiction[i]);
                 }
             }
-            
+
             for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
             {
                 if (findperson == Polizavis.Alco_Narco_Person[i].FIO)
@@ -181,5 +181,86 @@ namespace HelaMedical
                 MessageBox.Show("ФИО не найдено");
             }
         }
+
+        private void MenuItem_Download_Alco(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bool check = false;
+                DownloadDBAlco.ReadExcel_Alco();
+                check = DownloadDBAlco.Download_Alco();
+                if (check)
+                {
+                    MessageBox.Show("Запись в бд прошла успешно");
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка записи в бд");
+                }
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message);
+                ExcepLog.Excep(excep);
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+        private void MenuItem_Download_Narco(object sender, RoutedEventArgs e)
+        {
+            try { 
+            bool check = false;
+            DownloadDBNarco.ReadExcel_Narco();
+            check = DownloadDBNarco.Download_Narco();
+            if (check)
+            {
+                MessageBox.Show("Запись в бд прошла успешно");
+            }
+            else
+            {
+                MessageBox.Show("Ошибка записи в бд");
+            }
+        }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message);
+                ExcepLog.Excep(excep);
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
+        private void MenuItem_Download_Polizavis(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bool check = false;
+                DownloadDBPoliz.ReadExcel_Poliz();
+                check = DownloadDBPoliz.Download_Poliz();
+                if (check)
+                {
+                    MessageBox.Show("Запись в бд прошла успешно");
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка записи в бд");
+                }
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message);
+                ExcepLog.Excep(excep);
+            }
+            finally
+            {
+                db.Dispose();
+            }
+        }
+
     }
 }

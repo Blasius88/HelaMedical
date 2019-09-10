@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelaMedical"
         mc:Ignorable="d"
-        Title="HelaMedical Полизависимость" WindowState="Maximized">
+        Title="HelaMedical Полизависимость" WindowState="Maximized" Width="1900" Height="1200">
     <Grid>
         <ScrollViewer Name="scroll" 
                       CanContentScroll="True"
@@ -3682,6 +3682,7 @@
                         <RowDefinition Height="35*"/>
                         <RowDefinition Height="35*"/>
                         <RowDefinition Height="35*"/>
+                        <RowDefinition Height="35*"/>
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="35*"/>
                         <RowDefinition Height="*"/>
@@ -3908,18 +3909,24 @@
                          Style="{StaticResource TextCombo2}"/>
                     </Grid>
                     <Grid Grid.Row="24">
+                        <Label Content="Год учета"
+                               Style="{StaticResource LabelDiag}"/>
+                        <TextBox Name ="DataInfo"
+                                   Style="{StaticResource TextCombo1}"/>
+                    </Grid>
+                    <Grid Grid.Row="25">
                         <Label Content="Возраст на момент постановки на учет"
                        Style="{StaticResource LabelDiag}"/>
                         <TextBlock Name ="AgeOfRegistration"
                        Style="{StaticResource TextCombo2}"/>
                     </Grid>
-                    <Grid Grid.Row="25">
+                    <Grid Grid.Row="26">
                         <Label Content="Возраст на момент смерти"
                        Style="{StaticResource LabelDiag}"/>
                         <TextBlock Name ="AgeOfDead"
                            Style="{StaticResource TextCombo2}"/>
                     </Grid>
-                    <Grid Grid.Row="26">
+                    <Grid Grid.Row="27">
                         <Label Content="Область и раён"
                                Style="{StaticResource LabelDiag}"
                                VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -3928,13 +3935,13 @@
                                    Margin="10,0"
                                    VerticalAlignment="Center" HorizontalAlignment="Right"/>
                     </Grid>
-                    <Grid Grid.Row="27">
+                    <Grid Grid.Row="28">
                         <Label Content="Регистратор"
                        Style="{StaticResource LabelDiag}"/>
                         <TextBlock Name="Registrator" 
                            Style="{StaticResource TextCombo2}"/>
                     </Grid>
-                    <Grid Grid.Row="29">
+                    <Grid Grid.Row="30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50*"/>
                             <ColumnDefinition Width="50*"/>

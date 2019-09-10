@@ -264,6 +264,9 @@
     <Compile Include="Diagramm.xaml.cs">
       <DependentUpon>Diagramm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DownloadBDAlco.cs" />
+    <Compile Include="DownloadDBNarco.cs" />
+    <Compile Include="DownloadDBPoliz.cs" />
     <Compile Include="ExcelDataServis.cs" />
     <Compile Include="Excep\ExcepLog.cs" />
     <Compile Include="Generate_A_Report.xaml.cs">
@@ -303,6 +306,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201909092131570_first.cs" />
+    <Compile Include="Migrations\201909092131570_first.Designer.cs">
+      <DependentUpon>201909092131570_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NewPersonalWindow.xaml.cs">
       <DependentUpon>NewPersonalWindow.xaml</DependentUpon>
     </Compile>
@@ -325,11 +333,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201909092131570_first.resx">
+      <DependentUpon>201909092131570_first.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="File\AlcoDataBase.xlsx" />
     <None Include="File\Data.xlsx" />
+    <None Include="File\NarcoDataBase.xlsx" />
+    <None Include="File\PolizavisDataBase.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

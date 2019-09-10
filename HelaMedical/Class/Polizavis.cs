@@ -102,6 +102,8 @@ namespace HelaMedical.Class
         public string AgeOfDead { get; set; }
         public string AgeOfRegistration { get; set; }
 
+        public string DataInfo { get; set; } //Год постановки
+
         public string Registrotor { get; set; }
 
         public static List<Polizavis> Alco_Narco_Person = new List<Polizavis>();

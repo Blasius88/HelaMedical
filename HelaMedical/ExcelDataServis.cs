@@ -85,8 +85,7 @@ namespace HelaMedical
                         workSheet.Cells[i, 46] = alco[j].DrugDiagnosisAlc;
                         workSheet.Cells[i, 47] = alco[j].AgeOfRegistration;
                         workSheet.Cells[i, 48] = alco[j].AgeOfDead;
-                        workSheet.Cells[i,49]
-                        workSheet.Cells[i, 50] = alco[j].Registrotor;
+                        workSheet.Cells[i, 49] = alco[j].Registrotor;
                     }
                     workBook.Save();
                     workBook.Close();

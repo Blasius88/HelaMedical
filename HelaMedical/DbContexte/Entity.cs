@@ -23,7 +23,7 @@ namespace HelaMedical.DbContexte
            string disabilityStatus, string reasonForDisability, string socialStatus, string admOtv, string ugOtv, string dlitMLS, string statja107, string statUKRB,
            string rodPrav, string nomLTP, string LTPkol, string hosp, string EK, string dateOfDeregistration, string dateOfDead, string placeOfDead,
            string deathCertificate, string causeOfDeat, string deathCategory, string openingPlace, string historyOfParasucicides, string featuresOfObservation,
-           string DrugDiagnosisAlc, string experienceAbuse, string AlcoholicDrinks, string IComorbidity, string ageOfDead, string ageOfRegistration)
+           string DrugDiagnosisAlc, string experienceAbuse, string AlcoholicDrinks, string IComorbidity, string ageOfDead, string ageOfRegistration, string dataInfo)
         {
             try
             {
@@ -95,6 +95,7 @@ namespace HelaMedical.DbContexte
                     DrugDiagnosisAlc = DrugDiagnosisAlc,
                     AgeOfRegistration = ageOfRegistration,
                     AgeOfDead = ageOfDead,
+                    DataInfo = dataInfo,
                     Registrotor = Other.Regis,
                 };
 
@@ -127,7 +128,7 @@ namespace HelaMedical.DbContexte
              string rodPrav, string nomLTP, string LTPkol, string hosp, string EK, string dateOfDeregistration, string dateOfDead, string placeOfDead, string deathCertificate,
              string causeOfDeat, string deathCategory, string openingPlace, string historyOfParasucicides, string featuresOfObservation, string intranozologicalComorbidity,
              string typeOfDrug, string drugUse, string yearOfFirstUse, string experienceAbuseDrug, string remissions, string remissionNumber, string remissionTimer,
-             string drugDiagnosisX, string ageOfDead, string ageOfRegistration)
+             string drugDiagnosisX, string ageOfDead, string ageOfRegistration, string dataInfo)
         {
             try
             {
@@ -204,6 +205,7 @@ namespace HelaMedical.DbContexte
                     DrugDiagnosisX = drugDiagnosisX,
                     AgeOfDead = ageOfDead,
                     AgeOfRegistration = ageOfRegistration,
+                    DataInfo = dataInfo,
                     Registrotor = Other.Regis,
                 };
                 db.Narcomans.Add(newNarcoPerson);
@@ -236,7 +238,7 @@ namespace HelaMedical.DbContexte
             string deathCertificate, string causeOfDeat, string deathCategory, string openingPlace, string historyOfParasucicides, string featuresOfObservation,
             string DrugDiagnosisAlc, string experienceAbuse, string AlcoholicDrinks, string intranozologicalComorbidity, string typeOfDrug, string drugUse,
             string yearOfFirstUse, string experienceAbuseDrug, string remissions, string remissionNumber, string remissionTimer, string drugDiagnosisX, string ageOfDead,
-            string ageOfRegistration)
+            string ageOfRegistration, string dataInfo)
         {
             try
             {
@@ -313,6 +315,7 @@ namespace HelaMedical.DbContexte
                     DrugDiagnosisX = drugDiagnosisX,
                     AgeOfDead = ageOfDead,
                     AgeOfRegistration = ageOfRegistration,
+                    DataInfo = dataInfo,
                     Registrotor = Other.Regis,
                 };
                 db.Polizaviss.Add(newPolizavis);

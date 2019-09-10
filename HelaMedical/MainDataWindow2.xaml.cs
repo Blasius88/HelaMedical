@@ -768,6 +768,7 @@ namespace HelaMedical
                     }
                 }
 
+                string dataInfo = DataInfo.Text;
 
                 AgeOfDead.Text = Convert.ToString(ab);
                 string ageOfDead = AgeOfDead.Text;
@@ -780,7 +781,7 @@ namespace HelaMedical
                         disabilityStatus, reasonForDisability, SocialStatus, admOtv, ugOtv, dlitMLS, statja107, statUKRB,
                         rodPrav, nomLTP, LTPkol, hosp, EK, dateOfDeregistration, dateOfDead, placeOfDead, deathCertificate,
                         causeOfDeat, deathCategory, openingPlace, historyOfParasucicides, featuresOfObservation, IntranozologicalComorbidity,
-                        typeOfDrug, drugUse, yearOfFirstUse, experienceAbuseDrug, remissions, remissionNumber, remissinTimer, DrugAddictionX, ageOfDead, ageOfRegistration);
+                        typeOfDrug, drugUse, yearOfFirstUse, experienceAbuseDrug, remissions, remissionNumber, remissinTimer, DrugAddictionX, ageOfDead, ageOfRegistration, dataInfo);
                     Close();
                 }
                 else

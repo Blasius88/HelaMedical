@@ -637,6 +637,7 @@ namespace HelaMedical
                     }
                 }
 
+                string dataInfo = DataInfo.Text;
               
                 AgeOfDead.Text = Convert.ToString(ab);
                 string ageOfDead = AgeOfDead.Text;
@@ -652,7 +653,7 @@ namespace HelaMedical
                         dlitMLS, statja107, statUKRB, rodPrav, nomLTP, LTPkol, hosp, EK, dateOfDeregistration,
                         dateOfDead, placeOfDead, deathCertificate, causeOfDeat, deathCategory, openingPlace, historyOfParasucicides,
                         featuresOfObservation, DrugDiagnosisAlc, experienceAbuse, AlcoholicDrinks, IntranozologicalComorbidity, ageOfDead,
-                        ageOfRegistration);
+                        ageOfRegistration, dataInfo);
                     Close();
                 }
                 else

@@ -1,1 +1,8 @@
-﻿
+﻿0| System.Runtime.InteropServices.COMException (0x80010108): Вызванный объект был отключен от клиентов. (Исключение из HRESULT: 0x80010108 (RPC_E_DISCONNECTED))
+   в Microsoft.Office.Interop.Excel._Workbook.Close(Object SaveChanges, Object Filename, Object RouteWorkbook)
+   в HelaMedical.DownloadDB.ReadExcel_Alco() в d:\HelaMedical\HelaMedical\DownloadBD.cs:строка 101
+   в HelaMedical.Interface.MenuItem_Download_Alco(Object sender, RoutedEventArgs e) в d:\HelaMedical\HelaMedical\Interface.xaml.cs:строка 190| 10.09.2019 0:43:43| admin
+4| System.Runtime.InteropServices.COMException (0x80010108): Вызванный объект был отключен от клиентов. (Исключение из HRESULT: 0x80010108 (RPC_E_DISCONNECTED))
+   в Microsoft.Office.Interop.Excel._Workbook.Close(Object SaveChanges, Object Filename, Object RouteWorkbook)
+   в HelaMedical.DownloadDB.ReadExcel_Alco() в d:\HelaMedical\HelaMedical\DownloadBD.cs:строка 101
+   в HelaMedical.Interface.MenuItem_Download_Alco(Object sender, RoutedEventArgs e) в d:\HelaMedical\HelaMedical\Interface.xaml.cs:строка 190| 10.09.2019 0:45:13| admin
