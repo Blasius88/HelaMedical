@@ -66,12 +66,12 @@
                         Style="{StaticResource Button}"
                         Click="Excel_Click"/>
             </Grid>
-            <Grid Grid.Row="10">
+            <!--<Grid Grid.Row="10">
                 <Button Content="Построить диаграммы"
                         Name ="Diagramm"
                         Style="{StaticResource Button}"
                         Click="Diagramm_Click"/>
-            </Grid>
+            </Grid>-->
             <Grid Grid.Row="11">
             </Grid>
         </Grid>
