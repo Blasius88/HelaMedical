@@ -340,6 +340,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="File\AlcoDataBase.xlsx" />
     <None Include="File\Data.xlsx" />
     <None Include="File\NarcoDataBase.xlsx" />
