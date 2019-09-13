@@ -100,7 +100,7 @@ namespace HelaMedical
         public static bool Download_Alco()
         {
             db = new ApplicationContext();
-            bool check = false;
+            bool check;
             int a = 0;
             for (int i = 0; i < AlcoholismPersona.Count; i++)
             {

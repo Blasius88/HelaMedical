@@ -217,7 +217,7 @@ namespace HelaMedical
                     workSheet.Cells[i, 3] = poliz[j].Sex;
                     workSheet.Cells[i, 4] = poliz[j].Date;
                     workSheet.Cells[i, 5] = poliz[j].RegionCenterBLR;
-                    workSheet.Cells[i, 6] = poliz[j].RaenCentrBLR;
+                    workSheet.Cells[i, 6] = poliz[j].RaenCenterBLR;
                     workSheet.Cells[i, 7] = poliz[j].Life;
                     workSheet.Cells[i, 8] = poliz[j].Age;
                     workSheet.Cells[i, 9] = poliz[j].FamilyStatus;

@@ -213,6 +213,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\Papient.cs" />
     <Compile Include="DbContexte\DBConection.cs" />
     <Compile Include="DbContexte\Entity.cs" />
     <Page Include="CreatPersonal.xaml">
