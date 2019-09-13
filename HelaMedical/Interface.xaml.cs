@@ -12,7 +12,7 @@ namespace HelaMedical
     /// </summary>
     public partial class Interface : Window
     {
-        ApplicationContext db;
+        private ApplicationContext db;
         public List<Alco> alcoFindPerson = new List<Alco>();
         public List<Narcoman> narcoFindPerson = new List<Narcoman>();
         public List<Polizavis> polizFindPerson = new List<Polizavis>();

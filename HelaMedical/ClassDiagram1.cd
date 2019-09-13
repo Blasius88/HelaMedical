@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HelaMedical.CreatPersonal" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAMCAAAAAAAAAAgAAAAAAAAQAA=</HashCode>
+      <FileName>CreatPersonal.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HelaMedical.DownloadDBAlco" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAIAAQQAAAAAAAAAAAAAAAAAAAAIEAABAAAAAA=</HashCode>
+      <FileName>DownloadBDAlco.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.DownloadDBNarco" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAgAAIAAAUAAAAAAAAAAAAAAAAAAAAIAAABAAAAAA=</HashCode>
+      <FileName>DownloadDBNarco.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.DownloadDBPoliz" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAEIAAAQAAAAAABAAAAAAAAAAAAAIAAABAAAAAA=</HashCode>
+      <FileName>DownloadDBPoliz.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.OtherHosp" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>dESbj9pCxnith5KF0r714+G5qX0kKC8cioXm/7fcM5s=</HashCode>
+      <FileName>OtherHosp.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HelaMedical.Class.Bool" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Class\Bool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.Class.Other" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgCgACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Other.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.DbContexte.Entity" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAFAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbContexte\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.Migrations.first" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201909092131570_first.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HelaMedical.Migrations.Configuration" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.Properties.Resources" Collapsed="true">
+    <Position X="4.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HelaMedical.Properties.Settings" Collapsed="true">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

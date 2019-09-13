@@ -38,7 +38,7 @@ namespace HelaMedical
                         Sex = Convert.ToString(workSheet.Cells[cCnt, 3].Value),
                         Date = Convert.ToString(workSheet.Cells[cCnt, 4].Value),
                         RegionCenterBLR = Convert.ToString(workSheet.Cells[cCnt, 5].Value),
-                        RaenCentrBLR = Convert.ToString(workSheet.Cells[cCnt, 6].Value),
+                        RaenCenterBLR = Convert.ToString(workSheet.Cells[cCnt, 6].Value),
                         Life = Convert.ToString(workSheet.Cells[cCnt, 7].Value),
                         Age = Convert.ToString(workSheet.Cells[cCnt, 8].Value),
                         FamilyStatus = Convert.ToString(workSheet.Cells[cCnt, 9].Value),
@@ -112,7 +112,7 @@ namespace HelaMedical
         public static bool Download_Poliz()
         {
             db = new ApplicationContext();
-            bool check = false;
+            bool check;
             int a = 0;
             for (int i = 0; i < Alco_Narco_Person.Count; i++)
             {
@@ -123,7 +123,7 @@ namespace HelaMedical
                     Sex = Alco_Narco_Person[i].Sex,
                     Date = Alco_Narco_Person[i].Date,
                     RegionCenterBLR = Alco_Narco_Person[i].RegionCenterBLR,
-                    RaenCentrBLR = Alco_Narco_Person[i].RaenCentrBLR,
+                    RaenCenterBLR = Alco_Narco_Person[i].RaenCenterBLR,
                     Life = Alco_Narco_Person[i].Life,
                     Age = Alco_Narco_Person[i].Age,
                     FamilyStatus = Alco_Narco_Person[i].FamilyStatus,

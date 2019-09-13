@@ -263,7 +263,7 @@ namespace HelaMedical.DbContexte
                     Sex = sex,
                     Date = data,
                     RegionCenterBLR = regionCenterBLR,
-                    RaenCentrBLR = raenCentrBLR,
+                    RaenCenterBLR = raenCentrBLR,
                     Life = life,
                     Age = age,
                     FamilyStatus = familyStatus,
