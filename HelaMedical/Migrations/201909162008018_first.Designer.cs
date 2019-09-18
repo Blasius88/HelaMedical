@@ -13,7 +13,7 @@ namespace HelaMedical.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909092131570_first"; }
+            get { return "201909162008018_first"; }
         }
         
         string IMigrationMetadata.Source

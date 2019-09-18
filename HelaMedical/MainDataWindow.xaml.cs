@@ -14,9 +14,9 @@ namespace HelaMedical
     /// </summary>
     public partial class MainDataWindow : Window
     {
-        private bool worksStatus = false; 
+        private bool worksStatus = false;
         private bool worksStatus2 = false;
-        private bool worksStatus3= false;
+        private bool worksStatus3 = false;
         private bool worksStatus4 = false;
         private bool worksStatus5 = false;
         private bool worksStatus6 = false;
@@ -44,84 +44,84 @@ namespace HelaMedical
 
         private bool historyOfParasucicide = false;
 
-        private bool f101I = false;
-        private bool f101II = false;
-        private bool f101III = false;
-        private bool f1020I = false;
-        private bool f1020II = false;
-        private bool f1020III = false;
-        private bool f1021I = false;
-        private bool f1021II = false;
-        private bool f1021III = false;
-        private bool f1022I = false;
-        private bool f1022II = false;
-        private bool f1022III = false;
-        private bool f1023I = false;
-        private bool f1023II = false;
-        private bool f1023III = false;
-        private bool f1024I = false;
-        private bool f1024II = false;
-        private bool f1024III = false;
-        private bool f1025I = false;
-        private bool f1025II = false;
-        private bool f1025III = false;
-        private bool f1026I = false;
-        private bool f1026II = false;
-        private bool f1026III = false;
-        private bool f1031I = false;
-        private bool f1031II = false;
-        private bool f1031III = false;
-        private bool f1040I = false;
-        private bool f1040II = false;
-        private bool f1040III = false;
-        private bool f1041I = false;
-        private bool f1041II = false;
-        private bool f1041III = false;
-        private bool f1045I = false;
-        private bool f1045II = false;
-        private bool f1045III = false;
-        private bool f105I = false;
-        private bool f105II = false;
-        private bool f105III = false;
-        private bool f1050I = false;
-        private bool f1050II = false;
-        private bool f1050III = false;
-        private bool f1051I = false;
-        private bool f1051II = false;
-        private bool f1051III = false;
-        private bool f1052I = false;
-        private bool f1052II = false;
-        private bool f1052III = false;
-        private bool f1053I = false;
-        private bool f1053II = false;
-        private bool f1053III = false;
-        private bool f1054I = false;
-        private bool f1054II = false;
-        private bool f1054III = false;
-        private bool f1055I = false;
-        private bool f1055II = false;
-        private bool f1055III = false;
-        private bool f1056I = false;
-        private bool f1056II = false;
-        private bool f1056III = false;
-        private bool f106I = false;
-        private bool f106II = false;
-        private bool f106III = false;
-        private bool f1071I = false;
-        private bool f1071II = false;
-        private bool f1071III = false;
-        private bool f1073I = false;
-        private bool f1073II = false;
-        private bool f1073III = false;
-        private bool f109I = false;
-        private bool f109II = false;
-        private bool f109III = false;
-        private bool f1003I = false;
-        private bool f1003II = false;
-        private bool f1003III = false;
-        private bool f1006I = false;
-        private bool f1006II = false;
-        private bool f1006III = false;
+        //private bool f101I = false;
+        //private bool f101II = false;
+        //private bool f101III = false;
+        //private bool f1020I = false;
+        //private bool f1020II = false;
+        //private bool f1020III = false;
+        //private bool f1021I = false;
+        //private bool f1021II = false;
+        //private bool f1021III = false;
+        //private bool f1022I = false;
+        //private bool f1022II = false;
+        //private bool f1022III = false;
+        //private bool f1023I = false;
+        //private bool f1023II = false;
+        //private bool f1023III = false;
+        //private bool f1024I = false;
+        //private bool f1024II = false;
+        //private bool f1024III = false;
+        //private bool f1025I = false;
+        //private bool f1025II = false;
+        //private bool f1025III = false;
+        //private bool f1026I = false;
+        //private bool f1026II = false;
+        //private bool f1026III = false;
+        //private bool f1031I = false;
+        //private bool f1031II = false;
+        //private bool f1031III = false;
+        //private bool f1040I = false;
+        //private bool f1040II = false;
+        //private bool f1040III = false;
+        //private bool f1041I = false;
+        //private bool f1041II = false;
+        //private bool f1041III = false;
+        //private bool f1045I = false;
+        //private bool f1045II = false;
+        //private bool f1045III = false;
+        //private bool f105I = false;
+        //private bool f105II = false;
+        //private bool f105III = false;
+        //private bool f1050I = false;
+        //private bool f1050II = false;
+        //private bool f1050III = false;
+        //private bool f1051I = false;
+        //private bool f1051II = false;
+        //private bool f1051III = false;
+        //private bool f1052I = false;
+        //private bool f1052II = false;
+        //private bool f1052III = false;
+        //private bool f1053I = false;
+        //private bool f1053II = false;
+        //private bool f1053III = false;
+        //private bool f1054I = false;
+        //private bool f1054II = false;
+        //private bool f1054III = false;
+        //private bool f1055I = false;
+        //private bool f1055II = false;
+        //private bool f1055III = false;
+        //private bool f1056I = false;
+        //private bool f1056II = false;
+        //private bool f1056III = false;
+        //private bool f106I = false;
+        //private bool f106II = false;
+        //private bool f106III = false;
+        //private bool f1071I = false;
+        //private bool f1071II = false;
+        //private bool f1071III = false;
+        //private bool f1073I = false;
+        //private bool f1073II = false;
+        //private bool f1073III = false;
+        //private bool f109I = false;
+        //private bool f109II = false;
+        //private bool f109III = false;
+        //private bool f1003I = false;
+        //private bool f1003II = false;
+        //private bool f1003III = false;
+        //private bool f1006I = false;
+        //private bool f1006II = false;
+        //private bool f1006III = false;
 
         private bool vodka = false;
         private bool wine = false;
@@ -388,134 +388,134 @@ namespace HelaMedical
 
                 //Наркодиагноз
                 string f101 = "";
-                if (f101I == true) f101 += "f101I";
-                else if (f101II == true) f101 += "f101II";
-                else if (f101III == true) f101 += "f101III";
+                if (Narcodiagnosis_Alco.f101I == true) f101 += "f101I";
+                else if (Narcodiagnosis_Alco.f101II == true) f101 += "f101II";
+                else if (Narcodiagnosis_Alco.f101III == true) f101 += "f101III";
 
                 string f1020 = "";
-                if (f1020I == true) f1020 += "f1020I";
-                else if (f1020II == true) f1020 += "f1020II";
-                else if (f1020III == true) f1020 += "f1020III";
+                if (Narcodiagnosis_Alco.f1020I == true) f1020 += "f1020I";
+                else if (Narcodiagnosis_Alco.f1020II == true) f1020 += "f1020II";
+                else if (Narcodiagnosis_Alco.f1020III == true) f1020 += "f1020III";
 
                 string f1021 = "";
-                if (f1021I == true) f1021 += "f1021I";
-                else if (f1021II == true) f1021 += "f1021II";
-                else if (f1021III == true) f1021 += "f1021III";
+                if (Narcodiagnosis_Alco.f1021I == true) f1021 += "f1021I";
+                else if (Narcodiagnosis_Alco.f1021II == true) f1021 += "f1021II";
+                else if (Narcodiagnosis_Alco.f1021III == true) f1021 += "f1021III";
 
                 string f1022 = "";
-                if (f1022I == true) f1022 += "f1022I";
-                else if (f1022II == true) f1022 += "f1022II";
-                else if (f1022III == true) f1022 += "f1022III";
+                if (Narcodiagnosis_Alco.f1022I == true) f1022 += "f1022I";
+                else if (Narcodiagnosis_Alco.f1022II == true) f1022 += "f1022II";
+                else if (Narcodiagnosis_Alco.f1022III == true) f1022 += "f1022III";
 
                 string f1023 = "";
-                if (f1023I == true) f1023 += "f1023I";
-                else if (f1023II == true) f1023 += "f1023II";
-                else if (f1023III == true) f1023 += "f1023III";
+                if (Narcodiagnosis_Alco.f1023I == true) f1023 += "f1023I";
+                else if (Narcodiagnosis_Alco.f1023II == true) f1023 += "f1023II";
+                else if (Narcodiagnosis_Alco.f1023III == true) f1023 += "f1023III";
 
                 string f1024 = "";
-                if (f1024I == true) f1024 += "f1024I";
-                else if (f1024II == true) f1024 += "f1024II";
-                else if (f1024III == true) f1024 += "f1024III";
+                if (Narcodiagnosis_Alco.f1024I == true) f1024 += "f1024I";
+                else if (Narcodiagnosis_Alco.f1024II == true) f1024 += "f1024II";
+                else if (Narcodiagnosis_Alco.f1024III == true) f1024 += "f1024III";
 
                 string f1025 = "";
-                if (f1025I == true) f1025 += "f1025I";
-                else if (f1025II == true) f1025 += "f1025II";
-                else if (f1025III == true) f1025 += "f1025III";
+                if (Narcodiagnosis_Alco.f1025I == true) f1025 += "f1025I";
+                else if (Narcodiagnosis_Alco.f1025II == true) f1025 += "f1025II";
+                else if (Narcodiagnosis_Alco.f1025III == true) f1025 += "f1025III";
 
                 string f1026 = "";
-                if (f1026I == true) f1026 += "f1026I";
-                else if (f1026II == true) f1026 += "f1026II";
-                else if (f1026III == true) f1026 += "f1026III";
+                if (Narcodiagnosis_Alco.f1026I == true) f1026 += "f1026I";
+                else if (Narcodiagnosis_Alco.f1026II == true) f1026 += "f1026II";
+                else if (Narcodiagnosis_Alco.f1026III == true) f1026 += "f1026III";
 
                 string f1031 = "";
-                if (f1031I == true) f1031 += "f1031I";
-                else if (f1031II == true) f1031 += "f1031II";
-                else if (f1031III == true) f1031 += "f1031III";
+                if (Narcodiagnosis_Alco.f1031I == true) f1031 += "f1031I";
+                else if (Narcodiagnosis_Alco.f1031II == true) f1031 += "f1031II";
+                else if (Narcodiagnosis_Alco.f1031III == true) f1031 += "f1031III";
 
                 string f1040 = "";
-                if (f1040I == true) f1040 += "f1040I";
-                else if (f1040II == true) f1040 += "f1040II";
-                else if (f1040III == true) f1040 += "f1040III";
+                if (Narcodiagnosis_Alco.f1040I == true) f1040 += "f1040I";
+                else if (Narcodiagnosis_Alco.f1040II == true) f1040 += "f1040II";
+                else if (Narcodiagnosis_Alco.f1040III == true) f1040 += "f1040III";
 
                 string f1041 = "";
-                if (f1041I == true) f1041 += "f1041I";
-                else if (f1041II == true) f1041 += "f1041II";
-                else if (f1041III == true) f1041 += "f1041III";
+                if (Narcodiagnosis_Alco.f1041I == true) f1041 += "f1041I";
+                else if (Narcodiagnosis_Alco.f1041II == true) f1041 += "f1041II";
+                else if (Narcodiagnosis_Alco.f1041III == true) f1041 += "f1041III";
 
                 string f1045 = "";
-                if (f1045I == true) f1045 += "f1045I";
-                else if (f1045II == true) f1045 += "f1045II";
-                else if (f1045III == true) f1045 += "f1045III";
+                if (Narcodiagnosis_Alco.f1045I == true) f1045 += "f1045I";
+                else if (Narcodiagnosis_Alco.f1045II == true) f1045 += "f1045II";
+                else if (Narcodiagnosis_Alco.f1045III == true) f1045 += "f1045III";
 
                 string f105 = "";
-                if (f105I == true) f105 += "f105I";
-                else if (f105II == true) f105 += "f105II";
-                else if (f105III == true) f105 += "f105III";
+                if (Narcodiagnosis_Alco.f105I == true) f105 += "f105I";
+                else if (Narcodiagnosis_Alco.f105II == true) f105 += "f105II";
+                else if (Narcodiagnosis_Alco.f105III == true) f105 += "f105III";
 
                 string f1050 = "";
-                if (f1050I == true) f1050 += "f1050I";
-                else if (f1050II == true) f1050 += "f1050II";
-                else if (f1050III == true) f1050 += "f1050III";
+                if (Narcodiagnosis_Alco.f1050I == true) f1050 += "f1050I";
+                else if (Narcodiagnosis_Alco.f1050II == true) f1050 += "f1050II";
+                else if (Narcodiagnosis_Alco.f1050III == true) f1050 += "f1050III";
 
                 string f1051 = "";
-                if (f1051I == true) f1051 += "f1051I";
-                else if (f1051II == true) f1051 += "f1051II";
-                else if (f1051III == true) f1051 += "f1051III";
+                if (Narcodiagnosis_Alco.f1051I == true) f1051 += "f1051I";
+                else if (Narcodiagnosis_Alco.f1051II == true) f1051 += "f1051II";
+                else if (Narcodiagnosis_Alco.f1051III == true) f1051 += "f1051III";
 
                 string f1052 = "";
-                if (f1052I == true) f1052 += "f1052I";
-                else if (f1052II == true) f1052 += "f1052II";
-                else if (f1052III == true) f1052 += "f1052III";
+                if (Narcodiagnosis_Alco.f1052I == true) f1052 += "f1052I";
+                else if (Narcodiagnosis_Alco.f1052II == true) f1052 += "f1052II";
+                else if (Narcodiagnosis_Alco.f1052III == true) f1052 += "f1052III";
 
                 string f1053 = "";
-                if (f1053I == true) f1053 += "f1053I";
-                else if (f1053II == true) f1053 += "f1053II";
-                else if (f1053III == true) f1053 += "f1053III";
+                if (Narcodiagnosis_Alco.f1053I == true) f1053 += "f1053I";
+                else if (Narcodiagnosis_Alco.f1053II == true) f1053 += "f1053II";
+                else if (Narcodiagnosis_Alco.f1053III == true) f1053 += "f1053III";
 
                 string f1054 = "";
-                if (f1054I == true) f1054 += "f1054I";
-                else if (f1054II == true) f1054 += "f1054II";
-                else if (f1054III == true) f1054 += "f1054III";
+                if (Narcodiagnosis_Alco.f1054I == true) f1054 += "f1054I";
+                else if (Narcodiagnosis_Alco.f1054II == true) f1054 += "f1054II";
+                else if (Narcodiagnosis_Alco.f1054III == true) f1054 += "f1054III";
 
                 string f1055 = "";
-                if (f1055I == true) f1055 += "f1055I";
-                else if (f1055II == true) f1055 += "f1055II";
-                else if (f1055III == true) f1055 += "f1055III";
+                if (Narcodiagnosis_Alco.f1055I == true) f1055 += "f1055I";
+                else if (Narcodiagnosis_Alco.f1055II == true) f1055 += "f1055II";
+                else if (Narcodiagnosis_Alco.f1055III == true) f1055 += "f1055III";
 
                 string f1056 = "";
-                if (f1056I == true) f1056 += "f1056I";
-                else if (f1056II == true) f1056 += "f1056II";
-                else if (f1056III == true) f1056 += "f1056III";
+                if (Narcodiagnosis_Alco.f1056I == true) f1056 += "f1056I";
+                else if (Narcodiagnosis_Alco.f1056II == true) f1056 += "f1056II";
+                else if (Narcodiagnosis_Alco.f1056III == true) f1056 += "f1056III";
 
                 string f106 = "";
-                if (f106I == true) f106 += "f106I";
-                else if (f106II == true) f106 += "f106II";
-                else if (f106III == true) f106 += "f106III";
+                if (Narcodiagnosis_Alco.f106I == true) f106 += "f106I";
+                else if (Narcodiagnosis_Alco.f106II == true) f106 += "f106II";
+                else if (Narcodiagnosis_Alco.f106III == true) f106 += "f106III";
 
                 string f1071 = "";
-                if (f1071I == true) f1071 += "f1071I";
-                else if (f1071II == true) f1071 += "f1071II";
-                else if (f1071III == true) f1071 += "f1071III";
+                if (Narcodiagnosis_Alco.f1071I == true) f1071 += "f1071I";
+                else if (Narcodiagnosis_Alco.f1071II == true) f1071 += "f1071II";
+                else if (Narcodiagnosis_Alco.f1071III == true) f1071 += "f1071III";
 
                 string f1073 = "";
-                if (f1073I == true) f1073 += "f1073I";
-                else if (f1073II == true) f1073 += "f1073II";
-                else if (f1073III == true) f1073 += "f1073III";
+                if (Narcodiagnosis_Alco.f1073I == true) f1073 += "f1073I";
+                else if (Narcodiagnosis_Alco.f1073II == true) f1073 += "f1073II";
+                else if (Narcodiagnosis_Alco.f1073III == true) f1073 += "f1073III";
 
                 string f109 = "";
-                if (f109I == true) f109 += "f109I";
-                else if (f109II == true) f109 += "f109II";
-                else if (f109III == true) f109 += "f109III";
+                if (Narcodiagnosis_Alco.f109I == true) f109 += "f109I";
+                else if (Narcodiagnosis_Alco.f109II == true) f109 += "f109II";
+                else if (Narcodiagnosis_Alco.f109III == true) f109 += "f109III";
 
                 string f1003 = "";
-                if (f1003I == true) f1003 += "f1003I";
-                else if (f1003II == true) f1003 += "f1003II";
-                else if (f1003III == true) f1003 += "f1003III";
+                if (Narcodiagnosis_Alco.f1003I == true) f1003 += "f1003I";
+                else if (Narcodiagnosis_Alco.f1003II == true) f1003 += "f1003II";
+                else if (Narcodiagnosis_Alco.f1003III == true) f1003 += "f1003III";
 
                 string f1006 = "";
-                if (f1006I == true) f1006 += "f1006I";
-                else if (f1006II == true) f1006 += "f1006II";
-                else if (f1006III == true) f1006 += "f1006III";
+                if (Narcodiagnosis_Alco.f1006I == true) f1006 += "f1006I";
+                else if (Narcodiagnosis_Alco.f1006II == true) f1006 += "f1006II";
+                else if (Narcodiagnosis_Alco.f1006III == true) f1006 += "f1006III";
 
                 string DrugDiagnosisAlc = "";
                 if (f101 != "") DrugDiagnosisAlc += f101 + ", ";
@@ -850,704 +850,704 @@ namespace HelaMedical
         /// <param name="e"></param>
         private void F101I_Checked(object sender, RoutedEventArgs e)
         {
-            f101I = true;
+            Narcodiagnosis_Alco.f101I = true;
         }
         private void F101I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f101I = false;
+            Narcodiagnosis_Alco.f101I = false;
         }
 
         private void F101II_Checked(object sender, RoutedEventArgs e)
         {
-            f101II = true;
+            Narcodiagnosis_Alco.f101II = true;
         }
         private void F101II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f101II = false;
+            Narcodiagnosis_Alco.f101II = false;
         }
 
         private void F101III_Checked(object sender, RoutedEventArgs e)
         {
-            f101III = true;
+            Narcodiagnosis_Alco.f101III = true;
         }
         private void F101III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f101III = false;
+            Narcodiagnosis_Alco.f101III = false;
         }
 
         private void F1020I_Checked(object sender, RoutedEventArgs e)
         {
-            f1020I = true;
+            Narcodiagnosis_Alco.f1020I = true;
         }
         private void F1020I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1020I = false;
+            Narcodiagnosis_Alco.f1020I = false;
         }
 
         private void F1020II_Checked(object sender, RoutedEventArgs e)
         {
-            f1020II = true;
+            Narcodiagnosis_Alco.f1020II = true;
         }
         private void F1020II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1020II = false;
+            Narcodiagnosis_Alco.f1020II = false;
         }
 
         private void F1020III_Checked(object sender, RoutedEventArgs e)
         {
-            f1020III = true;
+            Narcodiagnosis_Alco.f1020III = true;
         }
         private void F1020III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1020III = false;
+            Narcodiagnosis_Alco.f1020III = false;
         }
 
         private void F1021I_Checked(object sender, RoutedEventArgs e)
         {
-            f1021I = true;
+            Narcodiagnosis_Alco.f1021I = true;
         }
         private void F1021I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1021I = false;
+            Narcodiagnosis_Alco.f1021I = false;
         }
 
         private void F1021II_Checked(object sender, RoutedEventArgs e)
         {
-            f1021II = true;
+            Narcodiagnosis_Alco.f1021II = true;
         }
         private void F1021II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1021II = false;
+            Narcodiagnosis_Alco.f1021II = false;
         }
 
         private void F1021III_Checked(object sender, RoutedEventArgs e)
         {
-            f1021III = true;
+            Narcodiagnosis_Alco.f1021III = true;
         }
         private void F1021III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1021III = false;
+            Narcodiagnosis_Alco.f1021III = false;
         }
 
         private void F1022I_Checked(object sender, RoutedEventArgs e)
         {
-            f1022I = true;
+            Narcodiagnosis_Alco.f1022I = true;
         }
         private void F1022I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1022I = false;
+            Narcodiagnosis_Alco.f1022I = false;
         }
 
         private void F1022II_Checked(object sender, RoutedEventArgs e)
         {
-            f1022II = true;
+            Narcodiagnosis_Alco.f1022II = true;
         }
         private void F1022II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1022II = false;
+            Narcodiagnosis_Alco.f1022II = false;
         }
 
         private void F1022III_Checked(object sender, RoutedEventArgs e)
         {
-            f1022III = true;
+            Narcodiagnosis_Alco.f1022III = true;
         }
         private void F1022III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1022III = false;
+            Narcodiagnosis_Alco.f1022III = false;
         }
 
         private void F1023I_Checked(object sender, RoutedEventArgs e)
         {
-            f1023I = true;
+            Narcodiagnosis_Alco.f1023I = true;
         }
         private void F1023I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1023I = false;
+            Narcodiagnosis_Alco.f1023I = false;
         }
 
         private void F1023II_Checked(object sender, RoutedEventArgs e)
         {
-            f1023II = true;
+            Narcodiagnosis_Alco.f1023II = true;
         }
         private void F1023II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1023II = false;
+            Narcodiagnosis_Alco.f1023II = false;
         }
 
         private void F1023III_Checked(object sender, RoutedEventArgs e)
         {
-            f1023III = true;
+            Narcodiagnosis_Alco.f1023III = true;
         }
         private void F1023III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1023III = false;
+            Narcodiagnosis_Alco.f1023III = false;
         }
 
         private void F1024I_Checked(object sender, RoutedEventArgs e)
         {
-            f1024I = true;
+            Narcodiagnosis_Alco.f1024I = true;
         }
         private void F1024I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1024I = false; 
+            Narcodiagnosis_Alco.f1024I = false; 
         }
 
         private void F1024II_Checked(object sender, RoutedEventArgs e)
         {
-            f1024II = true;
+            Narcodiagnosis_Alco.f1024II = true;
         }
         private void F1024II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1024II = false;
+            Narcodiagnosis_Alco.f1024II = false;
         }
 
         private void F1024III_Checked(object sender, RoutedEventArgs e)
         {
-            f1024III = true;
+            Narcodiagnosis_Alco.f1024III = true;
         }
         private void F1024III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1024III = false;
+            Narcodiagnosis_Alco.f1024III = false;
         }
 
         private void F1025I_Checked(object sender, RoutedEventArgs e)
         {
-            f1025I = true;
+            Narcodiagnosis_Alco.f1025I = true;
         }
         private void F1025I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1025I = false;
+            Narcodiagnosis_Alco.f1025I = false;
         }
 
         private void F1025II_Checked(object sender, RoutedEventArgs e)
         {
-            f1025II = true;
+            Narcodiagnosis_Alco.f1025II = true;
         }
         private void F1025II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1025II = false;
+            Narcodiagnosis_Alco.f1025II = false;
         }
 
         private void F1025III_Checked(object sender, RoutedEventArgs e)
         {
-            f1025III = true;
+            Narcodiagnosis_Alco.f1025III = true;
         }
         private void F1025III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1025III = false;
+            Narcodiagnosis_Alco.f1025III = false;
         }
 
         private void F1026I_Checked(object sender, RoutedEventArgs e)
         {
-            f1026I = true;
+            Narcodiagnosis_Alco.f1026I = true;
         }
         private void F1026I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1026I = false;
+            Narcodiagnosis_Alco.f1026I = false;
         }
 
         private void F1026II_Checked(object sender, RoutedEventArgs e)
         {
-            f1026II = true;
+            Narcodiagnosis_Alco.f1026II = true;
         }
         private void F1026II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1026II = false;
+            Narcodiagnosis_Alco.f1026II = false;
         }
 
         private void F1026III_Checked(object sender, RoutedEventArgs e)
         {
-            f1026III = true;
+            Narcodiagnosis_Alco.f1026III = true;
         }
         private void F1026III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1026III = false;
+            Narcodiagnosis_Alco.f1026III = false;
         }
 
         private void F1031I_Checked(object sender, RoutedEventArgs e)
         {
-            f1031I = true;
+            Narcodiagnosis_Alco.f1031I = true;
         }
         private void F1031I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1031I = false;
+            Narcodiagnosis_Alco.f1031I = false;
         }
 
         private void F1031II_Checked(object sender, RoutedEventArgs e)
         {
-            f1031II = true;
+            Narcodiagnosis_Alco.f1031II = true;
         }
         private void F1031II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1031II = false;
+            Narcodiagnosis_Alco.f1031II = false;
         }
 
         private void F1031III_Checked(object sender, RoutedEventArgs e)
         {
-            f1031III = true;
+            Narcodiagnosis_Alco.f1031III = true;
         }
         private void F1031III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1031III = false;
+            Narcodiagnosis_Alco.f1031III = false;
         }
 
         private void F1040I_Checked(object sender, RoutedEventArgs e)
         {
-            f1040I = true;
+            Narcodiagnosis_Alco.f1040I = true;
         }
         private void F1040I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1040I = false;
+            Narcodiagnosis_Alco.f1040I = false;
         }
 
         private void F1040II_Checked(object sender, RoutedEventArgs e)
         {
-            f1040II = true;
+            Narcodiagnosis_Alco.f1040II = true;
         }
         private void F1040II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1040II = false;
+            Narcodiagnosis_Alco.f1040II = false;
         }
 
         private void F1040III_Checked(object sender, RoutedEventArgs e)
         {
-            f1040III = true;
+            Narcodiagnosis_Alco.f1040III = true;
         }
         private void F1040III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1040III = false;
+            Narcodiagnosis_Alco.f1040III = false;
         }
 
         private void F1041I_Checked(object sender, RoutedEventArgs e)
         {
-            f1041I = true;
+            Narcodiagnosis_Alco.f1041I = true;
         }
         private void F1041I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1041I = false;
+            Narcodiagnosis_Alco.f1041I = false;
         }
 
         private void F1041II_Checked(object sender, RoutedEventArgs e)
         {
-            f1041II = true;
+            Narcodiagnosis_Alco.f1041II = true;
         }
         private void F1041II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1041II = false;
+            Narcodiagnosis_Alco.f1041II = false;
         }
 
         private void F1041III_Checked(object sender, RoutedEventArgs e)
         {
-            f1041III = true;
+            Narcodiagnosis_Alco.f1041III = true;
         }
         private void F1041III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1041III = false;
+            Narcodiagnosis_Alco.f1041III = false;
         }
 
         private void F1045I_Checked(object sender, RoutedEventArgs e)
         {
-            f1045I = true;
+            Narcodiagnosis_Alco.f1045I = true;
         }
         private void F1045I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1045I = false;
+            Narcodiagnosis_Alco.f1045I = false;
         }
 
         private void F1045II_Checked(object sender, RoutedEventArgs e)
         {
-            f1045II = true;
+            Narcodiagnosis_Alco.f1045II = true;
         }
         private void F1045II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1045II = false;
+            Narcodiagnosis_Alco.f1045II = false;
         }
 
         private void F1045III_Checked(object sender, RoutedEventArgs e)
         {
-            f1045III = true;
+            Narcodiagnosis_Alco.f1045III = true;
         }
         private void F1045III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1045III = false;
+            Narcodiagnosis_Alco.f1045III = false;
         }
 
         private void F105I_Checked(object sender, RoutedEventArgs e)
         {
-            f105I = true;
+            Narcodiagnosis_Alco.f105I = true;
         }
         private void F105I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f105I = false;
+            Narcodiagnosis_Alco.f105I = false;
         }
 
         private void F105II_Checked(object sender, RoutedEventArgs e)
         {
-            f105II = true;
+            Narcodiagnosis_Alco.f105II = true;
         }
         private void F105II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f105II = false;
+            Narcodiagnosis_Alco.f105II = false;
         }
 
         private void F105III_Checked(object sender, RoutedEventArgs e)
         {
-            f105III = true;
+            Narcodiagnosis_Alco.f105III = true;
         }
         private void F105III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f105III = false;
+            Narcodiagnosis_Alco.f105III = false;
         }
 
         private void F1050I_Checked(object sender, RoutedEventArgs e)
         {
-            f1050I = true;
+            Narcodiagnosis_Alco.f1050I = true;
         }
         private void F1050I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1050I = false;
+            Narcodiagnosis_Alco.f1050I = false;
         }
 
         private void F1050II_Checked(object sender, RoutedEventArgs e)
         {
-            f1050II = true;
+            Narcodiagnosis_Alco.f1050II = true;
         }
         private void F1050II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1050II = false;
+            Narcodiagnosis_Alco.f1050II = false;
         }
 
         private void F1050III_Checked(object sender, RoutedEventArgs e)
         {
-            f1050III = true;
+            Narcodiagnosis_Alco.f1050III = true;
         }
         private void F1050III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1050III = false;
+            Narcodiagnosis_Alco.f1050III = false;
         }
 
         private void F1051I_Checked(object sender, RoutedEventArgs e)
         {
-            f1051I = true;
+            Narcodiagnosis_Alco.f1051I = true;
         }
         private void F1051I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1051I = false;
+            Narcodiagnosis_Alco.f1051I = false;
         }
 
         private void F1051II_Checked(object sender, RoutedEventArgs e)
         {
-            f1051II = true;
+            Narcodiagnosis_Alco.f1051II = true;
         }
         private void F1051II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1051II = false;
+            Narcodiagnosis_Alco.f1051II = false;
         }
 
         private void F1051III_Checked(object sender, RoutedEventArgs e)
         {
-            f1051III = true;
+            Narcodiagnosis_Alco.f1051III = true;
         }
         private void F1051III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1051III = false;
+            Narcodiagnosis_Alco.f1051III = false;
         }
 
         private void F1052I_Checked(object sender, RoutedEventArgs e)
         {
-            f1052I = true;
+            Narcodiagnosis_Alco.f1052I = true;
         }
         private void F1052I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1052I = false;
+            Narcodiagnosis_Alco.f1052I = false;
         }
 
         private void F1052II_Checked(object sender, RoutedEventArgs e)
         {
-            f1052II = true;
+            Narcodiagnosis_Alco.f1052II = true;
         }
         private void F1052II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1052II = false;
+            Narcodiagnosis_Alco.f1052II = false;
         }
 
         private void F1052III_Checked(object sender, RoutedEventArgs e)
         {
-            f1052III = true;
+            Narcodiagnosis_Alco.f1052III = true;
         }
         private void F1052III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1052III = false;
+            Narcodiagnosis_Alco.f1052III = false;
         }
 
         private void F1053I_Checked(object sender, RoutedEventArgs e)
         {
-            f1053I = true;
+            Narcodiagnosis_Alco.f1053I = true;
         }
         private void F1053I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1053I = false;
+            Narcodiagnosis_Alco.f1053I = false;
         }
 
         private void F1053II_Checked(object sender, RoutedEventArgs e)
         {
-            f1053II = true;
+            Narcodiagnosis_Alco.f1053II = true;
         }
         private void F1053II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1053II = false;
+            Narcodiagnosis_Alco.f1053II = false;
         }
 
         private void F1053III_Checked(object sender, RoutedEventArgs e)
         {
-            f1053III = true;
+            Narcodiagnosis_Alco.f1053III = true;
         }
         private void F1053III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1053III = false;
+            Narcodiagnosis_Alco.f1053III = false;
         }
 
         private void F1054I_Checked(object sender, RoutedEventArgs e)
         {
-            f1054I = true;
+            Narcodiagnosis_Alco.f1054I = true;
         }
         private void F1054I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1054I = false;
+            Narcodiagnosis_Alco.f1054I = false;
         }
 
         private void F1054II_Checked(object sender, RoutedEventArgs e)
         {
-            f1054II = true;
+            Narcodiagnosis_Alco.f1054II = true;
         }
         private void F1054II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1054II = false;
+            Narcodiagnosis_Alco.f1054II = false;
         }
 
         private void F1054III_Checked(object sender, RoutedEventArgs e)
         {
-            f1054III = true;
+            Narcodiagnosis_Alco.f1054III = true;
         }
         private void F1054III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1054III = false;
+            Narcodiagnosis_Alco.f1054III = false;
         }
 
         private void F1055I_Checked(object sender, RoutedEventArgs e)
         {
-            f1055I = true;
+            Narcodiagnosis_Alco.f1055I = true;
         }
         private void F1055I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1055I = false;
+            Narcodiagnosis_Alco.f1055I = false;
         }
 
         private void F1055II_Checked(object sender, RoutedEventArgs e)
         {
-            f1055II = true;
+            Narcodiagnosis_Alco.f1055II = true;
         }
         private void F1055II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1055II = false;
+            Narcodiagnosis_Alco.f1055II = false;
         }
 
         private void F1055III_Checked(object sender, RoutedEventArgs e)
         {
-            f1055III = true;
+            Narcodiagnosis_Alco.f1055III = true;
         }
         private void F1055III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1055III = false;
+            Narcodiagnosis_Alco.f1055III = false;
         }
 
         private void F1056I_Checked(object sender, RoutedEventArgs e)
         {
-            f1056I = true;
+            Narcodiagnosis_Alco.f1056I = true;
         }
         private void F1056I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1056I = false;
+            Narcodiagnosis_Alco.f1056I = false;
         }
 
         private void F1056II_Checked(object sender, RoutedEventArgs e)
         {
-            f1056II = true;
+            Narcodiagnosis_Alco.f1056II = true;
         }
         private void F1056II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1056II = false;
+            Narcodiagnosis_Alco.f1056II = false;
         }
 
         private void F1056III_Checked(object sender, RoutedEventArgs e)
         {
-            f1056III = true;
+            Narcodiagnosis_Alco.f1056III = true;
         }
         private void F1056III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1056III = false;
+            Narcodiagnosis_Alco.f1056III = false;
         }
 
         private void F106I_Checked(object sender, RoutedEventArgs e)
         {
-            f106I = true;
+            Narcodiagnosis_Alco.f106I = true;
         }
         private void F106I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f106I = false;
+            Narcodiagnosis_Alco.f106I = false;
         }
 
         private void F106II_Checked(object sender, RoutedEventArgs e)
         {
-            f106II = true;
+            Narcodiagnosis_Alco.f106II = true;
         }
         private void F106II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f106II = false;
+            Narcodiagnosis_Alco.f106II = false;
         }
 
         private void F106III_Checked(object sender, RoutedEventArgs e)
         {
-            f106III = true;
+            Narcodiagnosis_Alco.f106III = true;
         }
         private void F106III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f106III = false;
+            Narcodiagnosis_Alco.f106III = false;
         }
 
         private void F1071I_Checked(object sender, RoutedEventArgs e)
         {
-            f1071I = true;
+            Narcodiagnosis_Alco.f1071I = true;
         }
         private void F1071I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1071I = false;
+            Narcodiagnosis_Alco.f1071I = false;
         }
 
         private void F1071II_Checked(object sender, RoutedEventArgs e)
         {
-            f1071II = true;
+            Narcodiagnosis_Alco.f1071II = true;
         }
         private void F1071II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1071II = false;
+            Narcodiagnosis_Alco.f1071II = false;
         }
 
         private void F1071III_Checked(object sender, RoutedEventArgs e)
         {
-            f1071III = true;
+            Narcodiagnosis_Alco.f1071III = true;
         }
         private void F1071III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1071III = false;
+            Narcodiagnosis_Alco.f1071III = false;
         }
 
         private void F1073I_Checked(object sender, RoutedEventArgs e)
         {
-            f1073I = true;
+            Narcodiagnosis_Alco.f1073I = true;
         }
         private void F1073I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1073I = false;
+            Narcodiagnosis_Alco.f1073I = false;
         }
 
         private void F1073II_Checked(object sender, RoutedEventArgs e)
         {
-            f1073II = true;
+            Narcodiagnosis_Alco.f1073II = true;
         }
         private void F1073II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1073II = false;
+            Narcodiagnosis_Alco.f1073II = false;
         }
 
         private void F1073III_Checked(object sender, RoutedEventArgs e)
         {
-            f1073III = true;
+            Narcodiagnosis_Alco.f1073III = true;
         }
         private void F1073III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1073III = false;
+            Narcodiagnosis_Alco.f1073III = false;
         }
 
         private void F109I_Checked(object sender, RoutedEventArgs e)
         {
-            f109I = true;
+            Narcodiagnosis_Alco.f109I = true;
         }
         private void F109I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f109I = false;
+            Narcodiagnosis_Alco.f109I = false;
         }
 
         private void F109II_Checked(object sender, RoutedEventArgs e)
         {
-            f109II = true;
+            Narcodiagnosis_Alco.f109II = true;
         }
         private void F109II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f109II = false;
+            Narcodiagnosis_Alco.f109II = false;
         }
 
         private void F109III_Checked(object sender, RoutedEventArgs e)
         {
-            f109III = true;
+            Narcodiagnosis_Alco.f109III = true;
         }
         private void F109III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f109III = false;
+            Narcodiagnosis_Alco.f109III = false;
         }
 
         private void F1003I_Checked(object sender, RoutedEventArgs e)
         {
-            f1003I = true;
+            Narcodiagnosis_Alco.f1003I = true;
         }
         private void F1003I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1003I = false;
+            Narcodiagnosis_Alco.f1003I = false;
         }
 
         private void F1003II_Checked(object sender, RoutedEventArgs e)
         {
-            f1003II = true;
+            Narcodiagnosis_Alco.f1003II = true;
         }
         private void F1003II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1003II = false;
+            Narcodiagnosis_Alco.f1003II = false;
         }
 
         private void F1003III_Checked(object sender, RoutedEventArgs e)
         {
-            f1003III = true;
+            Narcodiagnosis_Alco.f1003III = true;
         }
         private void F1003III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1003III = false;
+            Narcodiagnosis_Alco.f1003III = false;
         }
 
         private void F1006I_Checked(object sender, RoutedEventArgs e)
         {
-            f1006I = true;
+            Narcodiagnosis_Alco.f1006I = true;
         }
         private void F1006I_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1006I = false;
+            Narcodiagnosis_Alco.f1006I = false;
         }
 
         private void F1006II_Checked(object sender, RoutedEventArgs e)
         {
-            f1006II = true;
+            Narcodiagnosis_Alco.f1006II = true;
         }
         private void F1006II_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1006II = false;
+            Narcodiagnosis_Alco.f1006II = false;
         }
 
         private void F1006III_Checked(object sender, RoutedEventArgs e)
         {
-            f1006III = true;
+            Narcodiagnosis_Alco.f1006III = true;
         }
         private void F1006III_UnChecked(object sender, RoutedEventArgs e)
         {
-            f1006III = false;
+            Narcodiagnosis_Alco.f1006III = false;
         }
 
 

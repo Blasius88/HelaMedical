@@ -9,7 +9,7 @@ namespace HelaMedical.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(HelaMedical.ApplicationContext context)

@@ -13,6 +13,7 @@ namespace HelaMedical
         public ApplicationContext() : base("HelaMedical")
         {
         }
+
         public DbSet<Alco> Alcos { get; set; }
 
         public DbSet<Narcoman> Narcomans { get; set; }
