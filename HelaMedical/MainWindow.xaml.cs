@@ -14,8 +14,6 @@ namespace HelaMedical
     /// </summary>
     public partial class MainWindow : Window
     {
-        // BackgroundWorker backgroundWorker;
-
         ApplicationContext db;
 
         public MainWindow()
@@ -47,6 +45,12 @@ namespace HelaMedical
             try
             {
                 string path = @"\HelaMedical\HelaMedical\File\INC.INI";
+                if (!File.Exists(path))
+                {
+                    MessageBox.Show("Файл с нахождением информации по серверу не найден!" +
+                        "\nУкажите место нахождение файла");
+                    path = OpenFile.Open_File();
+                }
                 string s = File.ReadAllText(path);
                 DBConection.Select(s);
             }

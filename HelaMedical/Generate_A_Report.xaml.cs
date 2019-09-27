@@ -25,14 +25,11 @@ namespace HelaMedical
         public static string _periodS = "";
         public static string _periodPo = "";
 
-        public List<Alco> alco = new List<Alco>();
-        public List<Alco> Alco_Person = new List<Alco>();
+        public static List<Alco> alco = new List<Alco>();
 
-        public List<Narcoman> narco = new List<Narcoman>();
-        public List<Narcoman> Narco_Person = new List<Narcoman>();
+        public static List<Narcoman> narco = new List<Narcoman>();
 
-        public List<Polizavis> poliz = new List<Polizavis>();
-        public List<Polizavis> Poliz_Person = new List<Polizavis>();
+        public static List<Polizavis> poliz = new List<Polizavis>();
 
         public Generate_A_Report()
         {
@@ -57,7 +54,7 @@ namespace HelaMedical
         }
 
         /// <summary>
-        /// Преводим из бд в список 
+        /// Преводим из бд в список алкоголиков
         /// </summary>
         public void Generate_List_Alco()
         {
@@ -67,7 +64,7 @@ namespace HelaMedical
                 db.Alcos.Load();
                 foreach (var AlcoPer in db.Alcos)
                 {
-                    Alco_Person.Add(AlcoPer);
+                    alco.Add(AlcoPer);
                 }
             }
             catch (Exception excep)
@@ -78,17 +75,17 @@ namespace HelaMedical
         }
 
         /// <summary>
-        /// Преводим из бд в список 
+        /// Преводим из бд в список наркоманов
         /// </summary>
         public void Generate_List_Narco()
         {
             try
             {
                 db = new ApplicationContext();
-                db.Alcos.Load();
+                db.Narcomans.Load();
                 foreach (var Narco in db.Narcomans)
                 {
-                    Narco_Person.Add(Narco);
+                    narco.Add(Narco);
                 }
             }
             catch (Exception excep)
@@ -99,7 +96,7 @@ namespace HelaMedical
         }
 
         /// <summary>
-        /// Преводим из бд в список 
+        /// Преводим из бд в список полизависимых
         /// </summary>
         public void Generate_List_Poliz()
         {
@@ -109,7 +106,7 @@ namespace HelaMedical
                 db.Polizaviss.Load();
                 foreach (var Polis in db.Polizaviss)
                 {
-                    Poliz_Person.Add(Polis);
+                    poliz.Add(Polis);
                 }
             }
             catch (Exception excep)
@@ -122,14 +119,11 @@ namespace HelaMedical
         /// <summary>
         /// Создать отчет в DataGrid
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void Update_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 int count = 0;
-
                 string typeOfAddiction = TypeOfAddiction.Text;
                 string regionCenterBLR = RegionCenterBLR.Text;
                 string sex = Sex.Text;
@@ -139,10 +133,9 @@ namespace HelaMedical
                 string education = Education.Text;
                 string periodS = PeriodS.Text;
                 string periodPo = PeriodPo.Text;
-
                 if (typeOfAddiction == "")
                 {
-                    MessageBox.Show(" Все поля пустые");
+                    MessageBox.Show("Все поля пустые");
                     return;
                 }
 
@@ -202,15 +195,6 @@ namespace HelaMedical
         /// <summary>
         /// Передает 2 параметра 
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Two_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
         {
             if (typeOfAddiction != "" && regionCenterBLR != "" && sex == "" && familyStatus == ""
@@ -281,16 +265,7 @@ namespace HelaMedical
         /// <summary>
         /// Передает 3 параметра 
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
-            public void Three_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
+        public void Three_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
         {
             //-------------------------------
             //тип зависимости
@@ -551,15 +526,6 @@ namespace HelaMedical
         /// <summary>
         /// Передает 4 параметра 
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Four_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
         {
             if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
@@ -776,15 +742,6 @@ namespace HelaMedical
         /// <summary>
         /// Передает 5 параметров
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Five_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
         {
             if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
@@ -956,15 +913,6 @@ namespace HelaMedical
         /// <summary>
         /// Передает 6 параметров
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Six_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
         {
             if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
@@ -1091,15 +1039,6 @@ namespace HelaMedical
         /// <summary>
         /// Передает 7 параметров
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Seven_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
         {
             if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
@@ -1275,33 +1214,84 @@ namespace HelaMedical
         /// <summary>
         /// передает 8 параметров пока не дописан 
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Eight_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
-        { }
+        {
+            if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
+               && costOfKids != "" && familyComposition != "" && education != "" && periodS != "" && periodPo == "")
+            {
+                _typeOfAddiction = typeOfAddiction;
+                _regionCenterBLR = regionCenterBLR;
+                _sex = sex;
+                _familyStatus = familyStatus;
+                _costOfKids = costOfKids;
+                _familyComposition = familyComposition;
+                _education = education;
+                _periodS = periodS;
+                DataGridFormat(_typeOfAddiction, _regionCenterBLR, _sex, _familyStatus, _costOfKids, _familyComposition, _education, _periodS);
+            }
+            else if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
+            && costOfKids != "" && familyComposition != "" && education != "" && periodS == "" && periodPo != "")
+            {
+                _typeOfAddiction = typeOfAddiction;
+                _regionCenterBLR = regionCenterBLR;
+                _sex = sex;
+                _familyStatus = familyStatus;
+                _costOfKids = costOfKids;
+                _familyComposition = familyComposition;
+                _education = education;
+                _periodPo = periodPo;
+                DataGridFormat(_typeOfAddiction, _regionCenterBLR, _sex, _familyStatus, _costOfKids, _familyComposition, _education, _periodPo);
+            }
+            else if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
+            && costOfKids != "" && familyComposition != "" && education != "" && periodS == "" && periodPo != "")
+            {
+                _typeOfAddiction = typeOfAddiction;
+                _regionCenterBLR = regionCenterBLR;
+                _sex = sex;
+                _familyStatus = familyStatus;
+                _costOfKids = costOfKids;
+                _familyComposition = familyComposition;
+                _education = education;
+                _periodPo = periodPo;
+                DataGridFormat(_typeOfAddiction, _regionCenterBLR, _sex, _familyStatus, _costOfKids, _familyComposition, _education, _periodPo);
+            }
+            else if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
+            && costOfKids != "" && familyComposition != "" && education != "" && periodS == "" && periodPo != "")
+            {
+                _typeOfAddiction = typeOfAddiction;
+                _regionCenterBLR = regionCenterBLR;
+                _sex = sex;
+                _familyStatus = familyStatus;
+                _costOfKids = costOfKids;
+                _familyComposition = familyComposition;
+                _education = education;
+                _periodPo = periodPo;
+                DataGridFormat(_typeOfAddiction, _regionCenterBLR, _sex, _familyStatus, _costOfKids, _familyComposition, _education, _periodPo);
+            }
+        }
 
         /// <summary>
         /// передает 9 параметров пока не дописан 
         /// </summary>
-        /// <param name="typeOfAddiction"></param>
-        /// <param name="regionCenterBLR"></param>
-        /// <param name="sex"></param>
-        /// <param name="familyStatus"></param>
-        /// <param name="costOfKids"></param>
-        /// <param name="familyComposition"></param>
-        /// <param name="education"></param>
-        /// <param name="periodS"></param>
-        /// <param name="periodPo"></param>
         public void Nine_Params(string typeOfAddiction, string regionCenterBLR, string sex, string familyStatus, string costOfKids, string familyComposition, string education, string periodS, string periodPo)
-        { }
+        {
+            if (typeOfAddiction != "" && regionCenterBLR != "" && sex != "" && familyStatus != ""
+           && costOfKids != "" && familyComposition != "" && education != "" && periodS != "" && periodPo != "")
+            {
+                _typeOfAddiction = typeOfAddiction;
+                _regionCenterBLR = regionCenterBLR;
+                _sex = sex;
+                _familyStatus = familyStatus;
+                _costOfKids = costOfKids;
+                _familyComposition = familyComposition;
+                _education = education;
+                _periodS = periodS;
+                _periodPo = periodPo;
+                DataGridFormat(_typeOfAddiction, _regionCenterBLR, _sex, _familyStatus, _costOfKids, _familyComposition, _education, _periodS, _periodPo);
+            }
+        }
 
+        
         /// <summary>
         /// Принемает 1 параметр
         /// </summary>
@@ -1309,32 +1299,30 @@ namespace HelaMedical
         {
             if (a == "Алкогольная")
             {
-                db = new ApplicationContext();
-                db.Alcos.Load();
-
-                foreach (var alcos in db.Alcos)
+                Generate_List_Alco();
+                for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                 {
-                    alco.Add(alcos);
+                    alco.Add(Alco.AlcoholismPersona[i]);
                 }
                 DataGrid.ItemsSource = alco;
             }
 
             else if (a == "Наркотическая")
             {
-                db.Narcomans.Load();
-                foreach (var narcos in db.Narcomans)
+                Generate_List_Narco();
+                for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                 {
-                    narco.Add(narcos);
+                    narco.Add(Narcoman.Drug_Addiction[i]);
                 }
                 DataGrid.ItemsSource = narco;
             }
 
             else if (a == "Полизависимость")
             {
-                db.Polizaviss.Load();
-                foreach (var polizs in db.Polizaviss)
+                Generate_List_Poliz();
+                for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                 {
-                    poliz.Add(polizs);
+                    poliz.Add(Polizavis.Alco_Narco_Person[i]);
                 }
                 DataGrid.ItemsSource = poliz;
             }
@@ -1351,36 +1339,36 @@ namespace HelaMedical
                 {
 
                     Generate_List_Alco();
-                   
+
                     if (_regionCenterBLR == b)
                     {
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            if (Alco_Person[i].RegionCenterBLR == b)
+                            if (Alco.AlcoholismPersona[i].RegionCenterBLR == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
 
                     else if (_sex == b)
                     {
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            if (Alco_Person[i].Sex == b)
+                            if (Alco.AlcoholismPersona[i].Sex == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
 
                     else if (_familyStatus == b)
                     {
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            if (Alco_Person[i].FamilyStatus == b)
+                            if (Alco.AlcoholismPersona[i].FamilyStatus == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
@@ -1388,11 +1376,11 @@ namespace HelaMedical
                     else if (_costOfKids == b)
                     {
 
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            if (Alco_Person[i].CostOfKids == b)
+                            if (Alco.AlcoholismPersona[i].CostOfKids == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
@@ -1400,48 +1388,48 @@ namespace HelaMedical
                     else if (_familyComposition == b)
                     {
 
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            if (Alco_Person[i].FamilyComposition == b)
+                            if (Alco.AlcoholismPersona[i].FamilyComposition == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
 
                     else if (_education == b)
                     {
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            if (Alco_Person[i].Education == b)
+                            if (Alco.AlcoholismPersona[i].Education == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
 
                     else if (_periodS == b)
                     {
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            string[] mas = Alco_Person[i].DateOfDeregistration.Split('.', ',', '/');
+                            string[] mas = Alco.AlcoholismPersona[i].DateOfDeregistration.Split('.', ',', '/');
                             string data = mas[2];
                             if (data == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
 
                     else if (_periodPo == b)
                     {
-                        for (int i = 0; i < Alco_Person.Count; i++)
+                        for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                         {
-                            string[] mas = Alco_Person[i].DateOfDead.Split(',', '.', '/');
+                            string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split(',', '.', '/');
                             string data = mas[2];
                             if (data == b)
                             {
-                                alco.Add(Alco_Person[i]);
+                                alco.Add(Alco.AlcoholismPersona[i]);
                             }
                         }
                     }
@@ -1455,92 +1443,92 @@ namespace HelaMedical
                     Generate_List_Narco();
                     if (_regionCenterBLR == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            if (Narco_Person[i].RegionCenterBLR == b)
+                            if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_sex == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            if (Narco_Person[i].Sex == b)
+                            if (Narcoman.Drug_Addiction[i].Sex == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_familyStatus == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            if (Narco_Person[i].FamilyStatus == b)
+                            if (Narcoman.Drug_Addiction[i].FamilyStatus == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_costOfKids == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            if (Narco_Person[i].CostOfKids == b)
+                            if (Narcoman.Drug_Addiction[i].CostOfKids == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_familyComposition == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            if (Narco_Person[i].FamilyComposition == b)
+                            if (Narcoman.Drug_Addiction[i].FamilyComposition == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_education == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            if (Narco_Person[i].Education == b)
+                            if (Narcoman.Drug_Addiction[i].Education == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_periodS == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            string[] mas = Narco_Person[i].DataOfRegistration.Split(',', '.', '/');
+                            string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split(',', '.', '/');
                             string data = mas[2];
                             if (data == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
 
                     else if (_periodPo == b)
                     {
-                        for (int i = 0; i < Narco_Person.Count; i++)
+                        for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                         {
-                            string[] mas = Narco_Person[i].DateOfDead.Split(',', '.', '/');
+                            string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split(',', '.', '/');
                             string data = mas[2];
                             if (data == b)
                             {
-                                narco.Add(Narco_Person[i]);
+                                narco.Add(Narcoman.Drug_Addiction[i]);
                             }
                         }
                     }
@@ -1553,92 +1541,92 @@ namespace HelaMedical
                     Generate_List_Poliz();
                     if (_regionCenterBLR == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            if (Poliz_Person[i].RegionCenterBLR == b)
+                            if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_sex == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            if (Poliz_Person[i].Sex == b)
+                            if (Polizavis.Alco_Narco_Person[i].Sex == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_familyStatus == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            if (Poliz_Person[i].FamilyStatus == b)
+                            if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_costOfKids == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            if (Poliz_Person[i].CostOfKids == b)
+                            if (Polizavis.Alco_Narco_Person[i].CostOfKids == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_familyComposition == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            if (Poliz_Person[i].FamilyComposition == b)
+                            if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_education == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            if (Poliz_Person[i].Education == b)
+                            if (Polizavis.Alco_Narco_Person[i].Education == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_periodS == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            string[] mas = Poliz_Person[i].DataOfRegistration.Split(',', '.', '/');
+                            string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split(',', '.', '/');
                             string data = mas[2];
                             if (data == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
 
                     else if (_periodPo == b)
                     {
-                        for (int i = 0; i < Poliz_Person.Count; i++)
+                        for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                         {
-                            string[] mas = Poliz_Person[i].DateOfDead.Split(',', '.', '/');
+                            string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split(',', '.', '/');
                             string data = mas[2];
                             if (data == b)
                             {
-                                poliz.Add(Poliz_Person[i]);
+                                poliz.Add(Polizavis.Alco_Narco_Person[i]);
                             }
                         }
                     }
@@ -1648,7 +1636,7 @@ namespace HelaMedical
                 }
 
             }
-             catch (Exception excep)
+            catch (Exception excep)
             {
                 MessageBox.Show(excep.Message);
                 ExcepLog.Excep(excep);
@@ -1665,55 +1653,55 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b && Alco_Person[i].Sex == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && Alco.AlcoholismPersona[i].Sex == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b && Alco_Person[i].FamilyStatus == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && Alco.AlcoholismPersona[i].FamilyStatus == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b && Alco_Person[i].CostOfKids == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && Alco.AlcoholismPersona[i].CostOfKids == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b && Alco_Person[i].FamilyComposition == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && Alco.AlcoholismPersona[i].FamilyComposition == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b && Alco_Person[i].Education == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && Alco.AlcoholismPersona[i].Education == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -1721,11 +1709,11 @@ namespace HelaMedical
                 else if (_sex == b && _familyStatus == c)
                 {
 
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].FamilyStatus == c)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].FamilyStatus == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -1733,11 +1721,11 @@ namespace HelaMedical
                 else if (_sex == b && _costOfKids == c)
                 {
 
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].CostOfKids == c)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].CostOfKids == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -1745,55 +1733,55 @@ namespace HelaMedical
                 else if (_sex == b && _familyComposition == c)
                 {
 
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].FamilyComposition == c)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].FamilyComposition == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].Education == c)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].Education == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].CostOfKids == c)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].CostOfKids == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].FamilyComposition == c)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].FamilyComposition == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].Education == c)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].Education == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -1801,215 +1789,215 @@ namespace HelaMedical
                 else if (_costOfKids == b && _familyComposition == c)
                 {
 
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].CostOfKids == b && Alco_Person[i].FamilyComposition == c)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && Alco.AlcoholismPersona[i].FamilyComposition == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].CostOfKids == b && Alco_Person[i].Education == c)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && Alco.AlcoholismPersona[i].Education == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _education == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyComposition == b && Alco_Person[i].Education == c)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b && Alco.AlcoholismPersona[i].Education == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_education == b)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyComposition == b)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 // По датам 
                 else if (_regionCenterBLR == b && _periodS == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b && data == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b && data == c)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodS == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && data == c)
+                        if (Alco.AlcoholismPersona[i].Sex == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && data == c)
+                        if (Alco.AlcoholismPersona[i].Sex == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodS == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && data == c)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && data == c)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodS == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b && data == c)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b && data == c)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodS == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyComposition == b && data == c)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyComposition == b && data == c)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodS == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && data == c)
+                        if (Alco.AlcoholismPersona[i].Education == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && data == c)
+                        if (Alco.AlcoholismPersona[i].Education == b && data == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_periodS == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
                         if (data == b && data1 == c)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -2022,347 +2010,347 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b && Narco_Person[i].Sex == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && Narcoman.Drug_Addiction[i].Sex == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b && Narco_Person[i].FamilyStatus == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && Narcoman.Drug_Addiction[i].FamilyStatus == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b && Narco_Person[i].CostOfKids == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && Narcoman.Drug_Addiction[i].CostOfKids == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b && Narco_Person[i].FamilyComposition == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && Narcoman.Drug_Addiction[i].FamilyComposition == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b && Narco_Person[i].Education == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && Narcoman.Drug_Addiction[i].Education == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].FamilyStatus == c)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].FamilyStatus == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].CostOfKids == c)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].CostOfKids == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].FamilyComposition == c)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].FamilyComposition == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].Education == c)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].Education == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].CostOfKids == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].CostOfKids == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].FamilyComposition == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].FamilyComposition == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].Education == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].Education == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].CostOfKids == b && Narco_Person[i].FamilyComposition == c)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && Narcoman.Drug_Addiction[i].FamilyComposition == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].CostOfKids == b && Narco_Person[i].Education == c)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && Narcoman.Drug_Addiction[i].Education == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _education == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyComposition == b && Narco_Person[i].Education == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b && Narcoman.Drug_Addiction[i].Education == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_education == b)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyComposition == b)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //Используется дата 
                 else if (_regionCenterBLR == b && _periodS == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodS == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodS == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodS == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodS == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyComposition == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyComposition == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodS == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].Education == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && data == c)
+                        if (Narcoman.Drug_Addiction[i].Education == b && data == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_periodS == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
                         if (data == b && data1 == c)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -2375,132 +2363,132 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b && Poliz_Person[i].Sex == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && Polizavis.Alco_Narco_Person[i].Sex == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b && Poliz_Person[i].FamilyStatus == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && Polizavis.Alco_Narco_Person[i].FamilyStatus == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b && Poliz_Person[i].CostOfKids == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b && Poliz_Person[i].FamilyComposition == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b && Poliz_Person[i].Education == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && Polizavis.Alco_Narco_Person[i].Education == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].FamilyStatus == c)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].FamilyStatus == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].CostOfKids == c)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].FamilyComposition == c)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].Education == c)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].Education == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].CostOfKids == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].FamilyComposition == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].Education == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].Education == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -2508,204 +2496,204 @@ namespace HelaMedical
                 else if (_costOfKids == b && _familyComposition == c)
                 {
 
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].CostOfKids == b && Poliz_Person[i].FamilyComposition == c)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].CostOfKids == b && Poliz_Person[i].Education == c)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && Polizavis.Alco_Narco_Person[i].Education == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _education == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyComposition == b && Poliz_Person[i].Education == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b && Polizavis.Alco_Narco_Person[i].Education == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //по дате 
                 else if (_regionCenterBLR == b && _periodS == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodS == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodS == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodS == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodS == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyComposition == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyComposition == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodS == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && data == c)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && data == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_periodS == b && _periodPo == c)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
                         if (data == b && data1 == c)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -2724,260 +2712,260 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyComposition == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].FamilyComposition == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].FamilyComposition == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].CostOfKids == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -2985,136 +2973,136 @@ namespace HelaMedical
                 // Дата----------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b 
-                            && Alco_Person[i].Sex == c
+                        if (Alco.AlcoholismPersona[i].Education == b
+                            && Alco.AlcoholismPersona[i].Sex == c
                             && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].Sex == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].Sex == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].FamilyStatus == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].FamilyStatus == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b 
-                            && Alco_Person[i].FamilyStatus == c 
+                        if (Alco.AlcoholismPersona[i].Education == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
                             && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].CostOfKids == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].CostOfKids == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b 
-                            && Alco_Person[i].CostOfKids == c 
+                        if (Alco.AlcoholismPersona[i].Education == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
                             && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Education == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -3122,182 +3110,182 @@ namespace HelaMedical
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].FamilyStatus == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].FamilyStatus == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].FamilyStatus == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].FamilyStatus == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].CostOfKids == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].CostOfKids == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].CostOfKids == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].CostOfKids == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].CostOfKids == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].CostOfKids == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].CostOfKids == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].CostOfKids == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -3305,168 +3293,168 @@ namespace HelaMedical
                 //----------------------------------------------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b && Alco_Person[i].FamilyComposition == c && data == d)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && Alco.AlcoholismPersona[i].FamilyComposition == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyComposition == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyComposition == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyComposition == b && Alco_Person[i].Education == c && data == d)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b && Alco.AlcoholismPersona[i].Education == c && data == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 //----------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.',',','/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].RegionCenterBLR == b && data == c && data1 == d)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b && data == c && data1 == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].Sex == b && data == c && data1 == d)
+                        if (Alco.AlcoholismPersona[i].Sex == b && data == c && data1 == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].FamilyStatus == b && data == c && data1 == d)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b && data == c && data1 == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].CostOfKids == b && data == c && data1 == d)
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b && data == c && data1 == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].FamilyComposition == b && data == c && data1 == d)
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b && data == c && data1 == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].Education == b && data == c && data1 == d)
+                        if (Alco.AlcoholismPersona[i].Education == b && data == c && data1 == d)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -3479,260 +3467,260 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyComposition == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].FamilyComposition == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].FamilyComposition == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].CostOfKids == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -3740,130 +3728,130 @@ namespace HelaMedical
                 // Дата----------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].Sex == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].Sex == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].Sex == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].Sex == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].FamilyStatus == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].FamilyStatus == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].FamilyStatus == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].FamilyStatus == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].CostOfKids == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].CostOfKids == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].CostOfKids == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].CostOfKids == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Education == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -3871,182 +3859,182 @@ namespace HelaMedical
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].FamilyStatus == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].FamilyStatus == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].FamilyStatus == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].FamilyStatus == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].CostOfKids == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].CostOfKids == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].CostOfKids == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].CostOfKids == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].CostOfKids == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].CostOfKids == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].CostOfKids == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].CostOfKids == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -4054,168 +4042,168 @@ namespace HelaMedical
                 //----------------------------------------------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b && Narco_Person[i].FamilyComposition == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && Narcoman.Drug_Addiction[i].FamilyComposition == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyComposition == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyComposition == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyComposition == b && Narco_Person[i].Education == c && data == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b && Narcoman.Drug_Addiction[i].Education == c && data == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //----------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].RegionCenterBLR == b && data == c && data1 == d)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b && data == c && data1 == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].Sex == b && data == c && data1 == d)
+                        if (Narcoman.Drug_Addiction[i].Sex == b && data == c && data1 == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].FamilyStatus == b && data == c && data1 == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b && data == c && data1 == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].CostOfKids == b && data == c && data1 == d)
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b && data == c && data1 == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].FamilyComposition == b && data == c && data1 == d)
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b && data == c && data1 == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].Education == b && data == c && data1 == d)
+                        if (Narcoman.Drug_Addiction[i].Education == b && data == c && data1 == d)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -4228,260 +4216,260 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyComposition == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].FamilyComposition == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].FamilyComposition == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].CostOfKids == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -4489,130 +4477,130 @@ namespace HelaMedical
                 // Дата----------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].Sex == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].Sex == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].Sex == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].Sex == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].FamilyStatus == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].FamilyStatus == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].FamilyStatus == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].FamilyStatus == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].CostOfKids == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].CostOfKids == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Education == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -4620,182 +4608,182 @@ namespace HelaMedical
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].FamilyStatus == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].FamilyStatus == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].FamilyStatus == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].FamilyStatus == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].CostOfKids == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].CostOfKids == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].CostOfKids == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].CostOfKids == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].CostOfKids == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -4803,168 +4791,168 @@ namespace HelaMedical
                 //----------------------------------------------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b && Poliz_Person[i].FamilyComposition == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && Polizavis.Alco_Narco_Person[i].FamilyComposition == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyComposition == b && _education == c && _periodS == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyComposition == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _education == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyComposition == b && Poliz_Person[i].Education == c && data == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b && Polizavis.Alco_Narco_Person[i].Education == c && data == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //----------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b && data == c && data1 == d)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b && data == c && data1 == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].Sex == b && data == c && data1 == d)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b && data == c && data1 == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].FamilyStatus == b && data == c && data1 == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b && data == c && data1 == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].CostOfKids == b && data == c && data1 == d)
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b && data == c && data1 == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_familyComposition == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].FamilyComposition == b && data == c && data1 == d)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b && data == c && data1 == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_education == b && _periodS == c && _periodPo == d)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].Education == b && data == c && data1 == d)
+                        if (Polizavis.Alco_Narco_Person[i].Education == b && data == c && data1 == d)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -4982,669 +4970,669 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].FamilyComposition == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e)
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e)
                         {
-                            alco.Add(Alco_Person[i]);
-                        }
-                    }
-                }
-                
-                //дата -------------------------------------------------------------------------------------------------------------------------------------------
-                else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e)
-                {
-                    for (int i = 0; i < Alco_Person.Count; i++)
-                    {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
-                        string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && data == e)
-                        {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
-                else if (_regionCenterBLR == b && _sex == c && _familyStatus== d &&_periodPo == e)
+                //дата -------------------------------------------------------------------------------------------------------------------------------------------
+                else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b 
-                            && Alco_Person[i].Sex == c 
-                            && Alco_Person[i].FamilyStatus == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
+                        }
+                    }
+                }
+
+                else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodPo == e)
+                {
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
+                    {
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
+                        string data = mas[2];
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && data == e)
+                        {
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyComposition == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyComposition == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
                             && data == d
                             && data1 == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
                 //-----------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].FamilyComposition == d
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].FamilyComposition == d
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
                             && data == d
                             && data1 == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
                 //------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
                             && data == d
                             && data1 == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
                 //-----------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].CostOfKids == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].CostOfKids == b
-                            && Alco_Person[i].FamilyComposition == c
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
                             && data == d
                             && data1 == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyComposition == b && _education == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].FamilyComposition == b
-                            && Alco_Person[i].Education == c
+                        if (Alco.AlcoholismPersona[i].FamilyComposition == b
+                            && Alco.AlcoholismPersona[i].Education == c
                             && data == d
                             && data1 == e)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -5657,696 +5645,696 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].FamilyComposition == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e)
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 //дата -------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyComposition == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyComposition == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
                             && data == d
                             && data1 == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
                 //-----------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].FamilyComposition == d
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].FamilyComposition == d
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
                             && data == d
                             && data1 == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
                 //------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
                             && data == d
                             && data1 == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
                 //-----------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].CostOfKids == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].CostOfKids == b
-                            && Narco_Person[i].FamilyComposition == c
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
                             && data == d
                             && data1 == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyComposition == b && _education == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].FamilyComposition == b
-                            && Narco_Person[i].Education == c
+                        if (Narcoman.Drug_Addiction[i].FamilyComposition == b
+                            && Narcoman.Drug_Addiction[i].Education == c
                             && data == d
                             && data1 == e)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
-                   
+
                 }
                 DataGrid.ItemsSource = narco;
             }
@@ -6356,14 +6344,14 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                     DataGrid.ItemsSource = poliz;
@@ -6371,687 +6359,687 @@ namespace HelaMedical
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].FamilyComposition == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _education == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e)
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 //дата -------------------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyComposition == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyComposition == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
                             && data == d
                             && data1 == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
                 //-----------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].FamilyComposition == d
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].FamilyComposition == d
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_sex == b && _familyStatus == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
                             && data == d
                             && data1 == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
                 //------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
                             && data == d
                             && data1 == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
                 //-----------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodS == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].CostOfKids == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
-                 
+
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].CostOfKids == b
-                            && Poliz_Person[i].FamilyComposition == c
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
                             && data == d
                             && data1 == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyComposition == b && _education == c && _periodS == d && _periodPo == e)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].FamilyComposition == b
-                            && Poliz_Person[i].Education == c
+                        if (Polizavis.Alco_Narco_Person[i].FamilyComposition == b
+                            && Polizavis.Alco_Narco_Person[i].Education == c
                             && data == d
                             && data1 == e)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 DataGrid.ItemsSource = poliz;
             }
-           
+
 
         }
-       
+
         /// <summary>
         /// Принемает 6 параметров
         /// </summary>
@@ -7062,336 +7050,336 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _education == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].Education == f)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].Education == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e
-                            && Alco_Person[i].Education == f)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
+                            && Alco.AlcoholismPersona[i].Education == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
-                    
+
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e
-                            && Alco_Person[i].Education == f)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
+                            && Alco.AlcoholismPersona[i].Education == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].FamilyComposition == e
-                            && Alco_Person[i].Education == f)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
+                            && Alco.AlcoholismPersona[i].Education == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e
-                            && Alco_Person[i].Education == f)
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
+                            && Alco.AlcoholismPersona[i].Education == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 //дата ------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _periodS == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _periodS == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].FamilyComposition == e
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].FamilyComposition == e
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].Education == e
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].Education == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].Education == e
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].Education == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
 
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
                             && data == e
                             && data1 == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _periodS == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].FamilyComposition == e
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].FamilyComposition == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].Education == e
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].Education == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
-                            && Alco_Person[i].Education == e
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
+                            && Alco.AlcoholismPersona[i].Education == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Alco_Person[i].Sex == b
-                            && Alco_Person[i].FamilyStatus == c
-                            && Alco_Person[i].CostOfKids == d
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Alco.AlcoholismPersona[i].Sex == b
+                            && Alco.AlcoholismPersona[i].FamilyStatus == c
+                            && Alco.AlcoholismPersona[i].CostOfKids == d
                             && data == e
                             && data1 == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].FamilyStatus == b
-                            && Alco_Person[i].CostOfKids == c
-                            && Alco_Person[i].FamilyComposition == d
-                            && Alco_Person[i].Education == e
+                        if (Alco.AlcoholismPersona[i].FamilyStatus == b
+                            && Alco.AlcoholismPersona[i].CostOfKids == c
+                            && Alco.AlcoholismPersona[i].FamilyComposition == d
+                            && Alco.AlcoholismPersona[i].Education == e
                             && data == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Alco_Person[i].CostOfKids == b
-                            && Alco_Person[i].FamilyComposition == c
-                            && Alco_Person[i].Education == d
+                        if (Alco.AlcoholismPersona[i].CostOfKids == b
+                            && Alco.AlcoholismPersona[i].FamilyComposition == c
+                            && Alco.AlcoholismPersona[i].Education == d
                             && data == e
                             && data1 == f)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -7404,335 +7392,335 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _education == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].Education == f)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].Education == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e
-                            && Narco_Person[i].Education == f)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
+                            && Narcoman.Drug_Addiction[i].Education == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e
-                            && Narco_Person[i].Education == f)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
+                            && Narcoman.Drug_Addiction[i].Education == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].FamilyComposition == e
-                            && Narco_Person[i].Education == f)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
+                            && Narcoman.Drug_Addiction[i].Education == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e
-                            && Narco_Person[i].Education == f)
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
+                            && Narcoman.Drug_Addiction[i].Education == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //дата ---------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _periodS == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _periodS == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].FamilyComposition == e
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].FamilyComposition == e
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].Education == e
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].Education == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].Education == e
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].Education == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
 
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
                             && data == e
                             && data1 == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _periodS == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].FamilyComposition == e
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].Education == e
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].Education == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
-                            && Narco_Person[i].Education == e
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
+                            && Narcoman.Drug_Addiction[i].Education == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Narco_Person[i].Sex == b
-                            && Narco_Person[i].FamilyStatus == c
-                            && Narco_Person[i].CostOfKids == d
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Narcoman.Drug_Addiction[i].Sex == b
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == c
+                            && Narcoman.Drug_Addiction[i].CostOfKids == d
                             && data == e
                             && data1 == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].FamilyStatus == b
-                            && Narco_Person[i].CostOfKids == c
-                            && Narco_Person[i].FamilyComposition == d
-                            && Narco_Person[i].Education == e
+                        if (Narcoman.Drug_Addiction[i].FamilyStatus == b
+                            && Narcoman.Drug_Addiction[i].CostOfKids == c
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == d
+                            && Narcoman.Drug_Addiction[i].Education == e
                             && data == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
                 //------------------------------------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Narco_Person[i].CostOfKids == b
-                            && Narco_Person[i].FamilyComposition == c
-                            && Narco_Person[i].Education == d
+                        if (Narcoman.Drug_Addiction[i].CostOfKids == b
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == c
+                            && Narcoman.Drug_Addiction[i].Education == d
                             && data == e
                             && data1 == f)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -7745,335 +7733,335 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _education == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].Education == f)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].Education == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e
-                            && Poliz_Person[i].Education == f)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
+                            && Polizavis.Alco_Narco_Person[i].Education == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e
-                            && Poliz_Person[i].Education == f)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
+                            && Polizavis.Alco_Narco_Person[i].Education == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].FamilyComposition == e
-                            && Poliz_Person[i].Education == f)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
+                            && Polizavis.Alco_Narco_Person[i].Education == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _education == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e
-                            && Poliz_Person[i].Education == f)
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
+                            && Polizavis.Alco_Narco_Person[i].Education == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //Дата-------------------------------------------------------------------------------------------------------------------------------
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _periodS == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _periodS == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].FamilyComposition == e
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _familyComposition == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].FamilyComposition == e
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].Education == e
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _education == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].Education == e
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
 
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
                             && data == e
                             && data1 == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _periodS == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _familyComposition == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].FamilyComposition == e
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].Education == e
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _education == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
-                            && Poliz_Person[i].Education == e
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_sex == b && _familyStatus == c && _costOfKids == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Poliz_Person[i].Sex == b
-                            && Poliz_Person[i].FamilyStatus == c
-                            && Poliz_Person[i].CostOfKids == d
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Polizavis.Alco_Narco_Person[i].Sex == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == c
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == d
                             && data == e
                             && data1 == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //-------------------------------------------------------------------------------------------------------------------------------
                 else if (_familyStatus == b && _costOfKids == c && _familyComposition == d && _education == e && _periodS == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].FamilyStatus == b
-                            && Poliz_Person[i].CostOfKids == c
-                            && Poliz_Person[i].FamilyComposition == d
-                            && Poliz_Person[i].Education == e
+                        if (Polizavis.Alco_Narco_Person[i].FamilyStatus == b
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == d
+                            && Polizavis.Alco_Narco_Person[i].Education == e
                             && data == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
                 //------------------------------------------------------------------------------------------------------------------------------
                 else if (_costOfKids == b && _familyComposition == c && _education == d && _periodS == e && _periodPo == f)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data1 = mas1[2];
-                        if (Poliz_Person[i].CostOfKids == b
-                            && Poliz_Person[i].FamilyComposition == c
-                            && Poliz_Person[i].Education == d
+                        if (Polizavis.Alco_Narco_Person[i].CostOfKids == b
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == c
+                            && Polizavis.Alco_Narco_Person[i].Education == d
                             && data == e
                             && data1 == f)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -8093,52 +8081,52 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f
-                            && Alco_Person[i].Education == g)
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f
+                            && Alco.AlcoholismPersona[i].Education == g)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _periodS == g)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f
                             && data == g)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _periodPo == g)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f
                             && data == g)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -8151,52 +8139,52 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f
-                            && Narco_Person[i].Education == g)
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f
+                            && Narcoman.Drug_Addiction[i].Education == g)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _periodS == g)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f
                             && data == g)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _periodPo == g)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f
                             && data == g)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -8209,52 +8197,52 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f
-                            && Poliz_Person[i].Education == g)
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f
+                            && Polizavis.Alco_Narco_Person[i].Education == g)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _periodS == g)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f
                             && data == g)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _periodPo == g)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f
                             && data == g)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -8273,38 +8261,38 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodS == h)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f
-                            && Alco_Person[i].Education == g
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f
+                            && Alco.AlcoholismPersona[i].Education == g
                             && data == h)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodPo == h)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f
-                            && Alco_Person[i].Education == g
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f
+                            && Alco.AlcoholismPersona[i].Education == g
                             && data == h)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -8317,38 +8305,38 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodS == h)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f
-                            && Narco_Person[i].Education == g
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f
+                            && Narcoman.Drug_Addiction[i].Education == g
                             && data == h)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodPo == h)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f
-                            && Narco_Person[i].Education == g
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f
+                            && Narcoman.Drug_Addiction[i].Education == g
                             && data == h)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -8361,38 +8349,38 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodS == h)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DataOfRegistration.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DataOfRegistration.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f
-                            && Poliz_Person[i].Education == g
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f
+                            && Polizavis.Alco_Narco_Person[i].Education == g
                             && data == h)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
 
                 else if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodPo == h)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f
-                            && Poliz_Person[i].Education == g
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f
+                            && Polizavis.Alco_Narco_Person[i].Education == g
                             && data == h)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -8411,22 +8399,22 @@ namespace HelaMedical
                 Generate_List_Alco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodS == h && _periodPo == k)
                 {
-                    for (int i = 0; i < Alco_Person.Count; i++)
+                    for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                     {
-                        string[] mas = Alco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Alco_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Alco_Person[i].RegionCenterBLR == b
-                            && Alco_Person[i].Sex == c
-                            && Alco_Person[i].FamilyStatus == d
-                            && Alco_Person[i].CostOfKids == e
-                            && Alco_Person[i].FamilyComposition == f
-                            && Alco_Person[i].Education == g
+                        string[] mas1 = Alco.AlcoholismPersona[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Alco.AlcoholismPersona[i].RegionCenterBLR == b
+                            && Alco.AlcoholismPersona[i].Sex == c
+                            && Alco.AlcoholismPersona[i].FamilyStatus == d
+                            && Alco.AlcoholismPersona[i].CostOfKids == e
+                            && Alco.AlcoholismPersona[i].FamilyComposition == f
+                            && Alco.AlcoholismPersona[i].Education == g
                             && data == h
                             && data1 == k)
                         {
-                            alco.Add(Alco_Person[i]);
+                            alco.Add(Alco.AlcoholismPersona[i]);
                         }
                     }
                 }
@@ -8439,22 +8427,22 @@ namespace HelaMedical
                 Generate_List_Narco();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodS == h && _periodPo == k)
                 {
-                    for (int i = 0; i < Narco_Person.Count; i++)
+                    for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
                     {
-                        string[] mas = Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Narco_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Narco_Person[i].RegionCenterBLR == b
-                            && Narco_Person[i].Sex == c
-                            && Narco_Person[i].FamilyStatus == d
-                            && Narco_Person[i].CostOfKids == e
-                            && Narco_Person[i].FamilyComposition == f
-                            && Narco_Person[i].Education == g
+                        string[] mas1 = Narcoman.Drug_Addiction[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Narcoman.Drug_Addiction[i].RegionCenterBLR == b
+                            && Narcoman.Drug_Addiction[i].Sex == c
+                            && Narcoman.Drug_Addiction[i].FamilyStatus == d
+                            && Narcoman.Drug_Addiction[i].CostOfKids == e
+                            && Narcoman.Drug_Addiction[i].FamilyComposition == f
+                            && Narcoman.Drug_Addiction[i].Education == g
                             && data == h
                             && data1 == k)
                         {
-                            narco.Add(Narco_Person[i]);
+                            narco.Add(Narcoman.Drug_Addiction[i]);
                         }
                     }
                 }
@@ -8467,22 +8455,22 @@ namespace HelaMedical
                 Generate_List_Poliz();
                 if (_regionCenterBLR == b && _sex == c && _familyStatus == d && _costOfKids == e && _familyComposition == f && _education == g && _periodS == h && _periodPo == k)
                 {
-                    for (int i = 0; i < Poliz_Person.Count; i++)
+                    for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
                     {
-                        string[] mas = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
+                        string[] mas = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
                         string data = mas[2];
-                        string[] mas1 = Poliz_Person[i].DateOfDead.Split('.', ',', '/');
-                        string data1 = mas[2];
-                        if (Poliz_Person[i].RegionCenterBLR == b
-                            && Poliz_Person[i].Sex == c
-                            && Poliz_Person[i].FamilyStatus == d
-                            && Poliz_Person[i].CostOfKids == e
-                            && Poliz_Person[i].FamilyComposition == f
-                            && Poliz_Person[i].Education == g
+                        string[] mas1 = Polizavis.Alco_Narco_Person[i].DateOfDead.Split('.', ',', '/');
+                        string data1 = mas1[2];
+                        if (Polizavis.Alco_Narco_Person[i].RegionCenterBLR == b
+                            && Polizavis.Alco_Narco_Person[i].Sex == c
+                            && Polizavis.Alco_Narco_Person[i].FamilyStatus == d
+                            && Polizavis.Alco_Narco_Person[i].CostOfKids == e
+                            && Polizavis.Alco_Narco_Person[i].FamilyComposition == f
+                            && Polizavis.Alco_Narco_Person[i].Education == g
                             && data == h
                             && data1 == k)
                         {
-                            poliz.Add(Poliz_Person[i]);
+                            poliz.Add(Polizavis.Alco_Narco_Person[i]);
                         }
                     }
                 }
@@ -8490,7 +8478,6 @@ namespace HelaMedical
                 DataGrid.ItemsSource = poliz;
             }
         }
-
         /// <summary>
         /// клавиша назад
         /// </summary>
@@ -8509,7 +8496,7 @@ namespace HelaMedical
         }
 
         /// <summary>
-        /// Сформировать отчет 
+        /// клавиша сформировать отчет 
         /// </summary>
         private void Excel_Click(object sender, RoutedEventArgs e)
         {
@@ -8541,14 +8528,5 @@ namespace HelaMedical
             }
         }
 
-        /// <summary>
-        /// Клавиша Показать диаграммы 
-        /// </summary>
-        private void Diagramm_Click(object sender, RoutedEventArgs e)
-        {
-            Diagramm diag = new Diagramm();
-            diag.Show();  
-
-        }
     }
 }

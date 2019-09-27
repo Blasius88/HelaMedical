@@ -219,10 +219,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Diagramm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Generate_A_Report.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -260,9 +256,6 @@
     <Compile Include="Class\Polizavis.cs" />
     <Compile Include="CreatPersonal.xaml.cs">
       <DependentUpon>CreatPersonal.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Diagramm.xaml.cs">
-      <DependentUpon>Diagramm.xaml</DependentUpon>
     </Compile>
     <Compile Include="DownloadBDAlco.cs" />
     <Compile Include="DownloadDBNarco.cs" />
@@ -317,6 +310,7 @@
     <Compile Include="OblReg.xaml.cs">
       <DependentUpon>OblReg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OpenFile.cs" />
     <Compile Include="OtherHosp.xaml.cs">
       <DependentUpon>OtherHosp.xaml</DependentUpon>
     </Compile>

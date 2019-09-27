@@ -23,9 +23,10 @@ namespace HelaMedical
 
         public static void ReadExcel_Poliz()
         {
+
             try
             {
-                string ExcelFilePath = @"d:\HelaMedical\HelaMedical\File\NarcoDataBase.xlsx";
+                string ExcelFilePath = OpenFile.Open_File();
                 excelApp = new Excel.Application();
                 workBook = excelApp.Workbooks.Open(ExcelFilePath);
                 workSheet = (Worksheet)workBook.Worksheets.get_Item(1);

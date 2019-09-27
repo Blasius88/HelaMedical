@@ -8,6 +8,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using System.Windows;
 using HelaMedical.Excep;
+using System.IO;
 
 namespace HelaMedical
 {
@@ -25,8 +26,7 @@ namespace HelaMedical
                     count++;
                 if (count > 0)
                 {
-                    string ExcelFilePath = @"D:\HelaMedical\HelaMedical\File\AlcoReport.xlsx";
-
+                    string ExcelFilePath = OpenFile.Save_File_Excel();
                     Excel.Application excelApp = new Excel.Application();
                     Workbook workBook;
                     Worksheet workSheet;
@@ -113,13 +113,20 @@ namespace HelaMedical
                 count++;
             if (count > 0)
             {
-                string ExcelFilePath = @"D:\HelaMedical\HelaMedical\File\NarcoReport.xlsx";
-
+                string ExcelFilePath = OpenFile.Save_File_Excel();
                 Excel.Application excelApp = new Excel.Application();
                 Workbook workBook;
                 Worksheet workSheet;
-                workBook = excelApp.Workbooks.Open(ExcelFilePath);
-                workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
+                if (!(File.Exists(ExcelFilePath)))
+                {
+                    workBook = excelApp.Workbooks.Add(1);
+                    workSheet = (Excel.Worksheet)workBook.Sheets[1];
+                }
+                else
+                {
+                    workBook = excelApp.Workbooks.Open(ExcelFilePath);
+                    workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
+                }
 
                 // Получаем активную таблицу
                 for (int i = 1; i <= narco.Count; i++)
@@ -200,14 +207,20 @@ namespace HelaMedical
                 count++;
             if (count > 0)
             {
-                string ExcelFilePath = @"D:\HelaMedical\HelaMedical\File\PolizavisReport.xlsx";
-
                 Excel.Application excelApp = new Excel.Application();
                 Workbook workBook;
                 Worksheet workSheet;
-                workBook = excelApp.Workbooks.Open(ExcelFilePath);
-                workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
-
+                string ExcelFilePath = OpenFile.Save_File_Excel();
+                if (!(File.Exists(ExcelFilePath)))
+                {
+                    workBook = excelApp.Workbooks.Add(1);
+                    workSheet = (Excel.Worksheet)workBook.Sheets[1];
+                }
+                else
+                {
+                    workBook = excelApp.Workbooks.Open(ExcelFilePath);
+                    workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
+                }
                 // Получаем активную таблицу
                 for (int i = 1; i <= poliz.Count; i++)
                 {
