@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Windows;
 using HelaMedical.Class;
 using HelaMedical.Excep;
@@ -16,6 +17,9 @@ namespace HelaMedical
         public List<Alco> alcoFindPerson = new List<Alco>();
         public List<Narcoman> narcoFindPerson = new List<Narcoman>();
         public List<Polizavis> polizFindPerson = new List<Polizavis>();
+        private bool check_alco = false;
+        private bool check_narco = false;
+        private bool check_poliz = false;
 
         public Interface()
         {
@@ -124,15 +128,16 @@ namespace HelaMedical
         /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bool check_alco = false;
-            bool check_narco = false;
-            bool check_poliz = false;
+            ListOrder.ItemsSource = db.Alcos.Local.ToBindingList();
+
             string findperson = FindPerson.Text;
 
             //Очищаем память перед записью новой информации 
             alcoFindPerson.Clear();
             narcoFindPerson.Clear();
             polizFindPerson.Clear();
+
+            DownloadInBD();
 
             //Ищим инфу в колекциях
             for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
@@ -182,6 +187,12 @@ namespace HelaMedical
             }
         }
 
+
+        /// <summary>
+        /// загружаеи алкоголиков из Excel в бд
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Download_Alco(object sender, RoutedEventArgs e)
         {
             try
@@ -209,21 +220,27 @@ namespace HelaMedical
             }
         }
 
+        /// <summary>
+        /// загружаем наркотов из Excel в бд
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Download_Narco(object sender, RoutedEventArgs e)
         {
-            try { 
-            bool check = false;
-            DownloadDBNarco.ReadExcel_Narco();
-            check = DownloadDBNarco.Download_Narco();
-            if (check)
+            try
             {
-                MessageBox.Show("Запись в бд прошла успешно");
+                bool check = false;
+                DownloadDBNarco.ReadExcel_Narco();
+                check = DownloadDBNarco.Download_Narco();
+                if (check)
+                {
+                    MessageBox.Show("Запись в бд прошла успешно");
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка записи в бд");
+                }
             }
-            else
-            {
-                MessageBox.Show("Ошибка записи в бд");
-            }
-        }
             catch (Exception excep)
             {
                 MessageBox.Show(excep.Message);
@@ -235,6 +252,11 @@ namespace HelaMedical
             }
         }
 
+        /// <summary>
+        /// загружаем полизавис из Excel в бд
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Download_Polizavis(object sender, RoutedEventArgs e)
         {
             try
@@ -262,5 +284,78 @@ namespace HelaMedical
             }
         }
 
+        private void DownloadInBD()
+        {
+            Alco.AlcoholismPersona.Clear();
+            Narcoman.Drug_Addiction.Clear();
+            Polizavis.Alco_Narco_Person.Clear();
+
+            foreach (Alco alco in db.Alcos)
+            {
+                Alco.AlcoholismPersona.Add(alco);
+            }
+            foreach (Narcoman narc in db.Narcomans)
+            {
+                Narcoman.Drug_Addiction.Add(narc);
+            }
+            foreach (Polizavis poli in db.Polizaviss)
+            {
+                Polizavis.Alco_Narco_Person.Add(poli);
+            }
+        }
+
+        private void Delete_Button(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (ListOrder.SelectedItems.Count > 0)
+                {
+                    for (int i = 0; i < ListOrder.SelectedItems.Count; i++)
+                    {
+                        if (check_alco == true)
+                        {
+                            Alco alco = ListOrder.SelectedItems[i] as Alco;
+                            if (alco != null)
+                            {
+                                db.Alcos.Remove(alco);
+
+                            }
+                        }
+                        if (check_narco == true)
+                        {
+                            Narcoman narco = ListOrder.SelectedItems[i] as Narcoman;
+                            if (narco != null)
+                            {
+                                db.Narcomans.Remove(narco);
+
+                            }
+                        }
+                        if (check_poliz == true)
+                        {
+                            Polizavis poli = ListOrder.SelectedItems[i] as Polizavis;
+                            if (poli != null)
+                            {
+                                db.Polizaviss.Remove(poli);
+
+                            }
+                        }
+                    }
+                    db.SaveChanges();
+                }
+                ListOrder.ItemsSource = null;
+                MessageBox.Show("Пациент удален");
+            }
+            catch (Exception ex)
+            {
+                ExcepLog.Excep(ex);
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void MenuItem_Click_Edit(object sender, RoutedEventArgs e)
+        {
+            db.SaveChanges();
+            MessageBox.Show("Пациент изменен");
+        }
     }
 }
