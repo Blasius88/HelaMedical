@@ -45,6 +45,7 @@ namespace HelaMedical
             try
             {
                 if (db != null) db.Dispose();
+                
             }
             catch (Exception excep)
             {
@@ -8521,7 +8522,7 @@ namespace HelaMedical
                 {
                     ExcelDataServis.Save_Report_Excel_Poliz(poliz);
                 }
-
+                if (db != null) db.Dispose();
                 Close();
             }
 
