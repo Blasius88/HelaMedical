@@ -39,7 +39,7 @@ namespace HelaMedical
         {
             try
             {
-                if (Other.Obl == "" || Other.Reg == "")
+                if (Other.Obl == "" || Other.Reg == ""|| Other.Obl == null || Other.Reg == null)
                 {
                     MessageBox.Show("Не выбрали район");
                     return;

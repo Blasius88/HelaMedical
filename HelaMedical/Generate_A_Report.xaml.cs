@@ -60,11 +60,13 @@ namespace HelaMedical
         {
             try
             {
+                Alco.AlcoholismPersona.Clear();
+                alco.Clear();
                 db = new ApplicationContext();
                 db.Alcos.Load();
                 foreach (var AlcoPer in db.Alcos)
                 {
-                    alco.Add(AlcoPer);
+                    Alco.AlcoholismPersona.Add(AlcoPer);
                 }
             }
             catch (Exception excep)
@@ -81,11 +83,13 @@ namespace HelaMedical
         {
             try
             {
+                narco.Clear();
+                Narcoman.Drug_Addiction.Clear();
                 db = new ApplicationContext();
                 db.Narcomans.Load();
                 foreach (var Narco in db.Narcomans)
                 {
-                    narco.Add(Narco);
+                    Narcoman.Drug_Addiction.Add(Narco);
                 }
             }
             catch (Exception excep)
@@ -102,11 +106,13 @@ namespace HelaMedical
         {
             try
             {
+                poliz.Clear();
+                Polizavis.Alco_Narco_Person.Clear();
                 db = new ApplicationContext();
                 db.Polizaviss.Load();
                 foreach (var Polis in db.Polizaviss)
                 {
-                    poliz.Add(Polis);
+                    Polizavis.Alco_Narco_Person.Add(Polis);
                 }
             }
             catch (Exception excep)
@@ -1337,9 +1343,7 @@ namespace HelaMedical
             {
                 if (a == "Алкогольная")
                 {
-
                     Generate_List_Alco();
-
                     if (_regionCenterBLR == b)
                     {
                         for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
