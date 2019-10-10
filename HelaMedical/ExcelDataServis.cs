@@ -85,7 +85,8 @@ namespace HelaMedical
                         workSheet.Cells[i, 46] = alco[j].DrugDiagnosisAlc;
                         workSheet.Cells[i, 47] = alco[j].AgeOfRegistration;
                         workSheet.Cells[i, 48] = alco[j].AgeOfDead;
-                        workSheet.Cells[i, 49] = alco[j].Registrotor;
+                        workSheet.Cells[i, 49] = alco[j].DataInfo;
+                        workSheet.Cells[i, 50] = alco[j].Registrotor;
                     }
                     workBook.Save();
                     workBook.Close();
@@ -185,7 +186,8 @@ namespace HelaMedical
                     workSheet.Cells[i, 51] = narco[j].DrugDiagnosisX;
                     workSheet.Cells[i, 52] = narco[j].AgeOfRegistration;
                     workSheet.Cells[i, 53] = narco[j].AgeOfDead;
-                    workSheet.Cells[i, 54] = narco[j].Registrotor;
+                    workSheet.Cells[i, 54] = narco[j].DataInfo;
+                    workSheet.Cells[i, 55] = narco[j].Registrotor;
                 }
                 workBook.Save();
                 workBook.Close();
@@ -283,7 +285,8 @@ namespace HelaMedical
                     workSheet.Cells[i, 56] = poliz[j].DrugDiagnosisX;
                     workSheet.Cells[i, 57] = poliz[j].AgeOfRegistration;
                     workSheet.Cells[i, 58] = poliz[j].AgeOfDead;
-                    workSheet.Cells[i, 59] = poliz[j].Registrotor;
+                    workSheet.Cells[i, 59] = poliz[j].DataInfo;
+                    workSheet.Cells[i, 60] = poliz[j].Registrotor;
                 }
                 workBook.Save();
                 workBook.Close();

@@ -1,1 +1,10 @@
-﻿
+﻿0| System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в HelaMedical.Generate_A_Report.Download_Accouting_data_Click(Object sender, RoutedEventArgs e) в D:\HelaMedical\HelaMedical\Generate_A_Report.xaml.cs:строка 8568| 11.10.2019 0:21:14| admin
+5| System.FormatException: Входная строка имела неверный формат.
+   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   в System.Convert.ToInt32(String value)
+   в HelaMedical.Generate_A_Report.Download_Accouting_data_Click(Object sender, RoutedEventArgs e) в D:\HelaMedical\HelaMedical\Generate_A_Report.xaml.cs:строка 8569| 11.10.2019 0:25:48| admin

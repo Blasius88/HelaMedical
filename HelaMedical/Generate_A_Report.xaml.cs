@@ -44,7 +44,8 @@ namespace HelaMedical
         {
             try
             {
-                if (db != null) db.Dispose();
+                if (db != null)
+                    db.Dispose();
                 
             }
             catch (Exception excep)
@@ -75,6 +76,11 @@ namespace HelaMedical
                 MessageBox.Show(excep.Message);
                 ExcepLog.Excep(excep);
             }
+            finally
+            {
+                if (db != null)
+                    db.Dispose();
+            }
         }
 
         /// <summary>
@@ -98,6 +104,11 @@ namespace HelaMedical
                 MessageBox.Show(excep.Message);
                 ExcepLog.Excep(excep);
             }
+            finally
+            {
+                if (db != null)
+                    db.Dispose();
+            }
         }
 
         /// <summary>
@@ -120,6 +131,11 @@ namespace HelaMedical
             {
                 MessageBox.Show(excep.Message);
                 ExcepLog.Excep(excep);
+            }
+            finally
+            {
+                if (db != null)
+                    db.Dispose();
             }
         }
 
@@ -8543,5 +8559,43 @@ namespace HelaMedical
             }
         }
 
+        private void Download_Accouting_data_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string accouting_data = Accouting_data.Text;
+                if (accouting_data != "" || accouting_data != null)
+                {
+                    bool flag = Convert.ToBoolean(Convert.ToInt32(Accouting_data.Text));
+                    if (flag)
+                    {
+                        _typeOfAddiction = TypeOfAddiction.Text;
+                        if (_typeOfAddiction == "Алкогольная")
+                            Generate_List_Alco();
+                        else if (_typeOfAddiction == "Наркотическая")
+                            Generate_List_Narco();
+                        else if (_typeOfAddiction == "Полизависимость")
+                            Generate_List_Poliz();
+                        Generate_a_raport_account_data.Generate_a_raport(alco, narco, poliz, Accouting_data.Text, _typeOfAddiction);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ввели неправелно год учета");
+                        Accouting_data.Clear();
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не отработала");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                ExcepLog.Excep(ex);
+            }
+
+        }
     }
 }

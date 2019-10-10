@@ -112,7 +112,7 @@ namespace HelaMedical.DbContexte
             }
             catch (Exception excep)
             {
-                MessageBox.Show("Произошла ошибка при добавленни данных в массив");
+                MessageBox.Show("Произошла ошибка при добавленни данных в БД");
                 ExcepLog.Excep(excep);
                 return;
             }
@@ -221,7 +221,7 @@ namespace HelaMedical.DbContexte
             }
             catch (Exception excep)
             {
-                MessageBox.Show("Произошла ошибка при добавленни данных в массив");
+                MessageBox.Show("Произошла ошибка при добавленни данных в БД");
                 ExcepLog.Excep(excep);
                 return;
             }
@@ -330,7 +330,7 @@ namespace HelaMedical.DbContexte
             }
             catch (Exception excep)
             {
-                MessageBox.Show("Произошла ошибка при добавленни данных в массив");
+                MessageBox.Show("Произошла ошибка при добавленни данных в БД");
                 ExcepLog.Excep(excep);
             }
         }

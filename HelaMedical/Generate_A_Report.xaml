@@ -30,6 +30,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
@@ -63,21 +64,23 @@
             <Grid Grid.Row="9">
                 <Button Content="Выгрузить в Excel"
                         Name="Excel"
-                        Style="{StaticResource Button}"
+                        IsEnabled="{Binding ElementName=Update, Path=IsEnabled}"                        Style="{StaticResource Button}"
                         Click="Excel_Click"/>
             </Grid>
-            <!--<Grid Grid.Row="10">
-                <Button Content="Построить диаграммы"
-                        Name ="Diagramm"
+            <Grid Grid.Row="11">
+                <Button Content="Выгрузить по дате учета "
+                        Name ="Download_Accouting_data"
+                        IsEnabled="{Binding ElementName=Accouting_data, Path =Text.Length}"
                         Style="{StaticResource Button}"
-                        Click="Diagramm_Click"/>
-            </Grid>-->
+                        Click="Download_Accouting_data_Click"/>
+            </Grid>
             <Grid Grid.Row="11">
             </Grid>
         </Grid>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -175,6 +178,11 @@
                         Style="{StaticResource Button}"
                         Name="Back"
                         Click="Back_Click"/>
+            </Grid>
+            <Grid Grid.Row="11">
+                <TextBox Name="Accouting_data"
+                         IsEnabled="{Binding ElementName=TypeOfAddiction, Path=Text.Length}"
+                         ToolTip="Активируется при выборе вида зависимости"/>
             </Grid>
         </Grid>
 

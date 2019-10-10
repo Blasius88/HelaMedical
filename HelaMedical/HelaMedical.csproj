@@ -262,6 +262,7 @@
     <Compile Include="DownloadDBPoliz.cs" />
     <Compile Include="ExcelDataServis.cs" />
     <Compile Include="Excep\ExcepLog.cs" />
+    <Compile Include="Generate_a_raport_account_data.cs" />
     <Compile Include="Generate_A_Report.xaml.cs">
       <DependentUpon>Generate_A_Report.xaml</DependentUpon>
     </Compile>
