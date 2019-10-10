@@ -8507,25 +8507,35 @@ namespace HelaMedical
         {
             try
             {
+                bool close = false;
                 //сформировать отчет по алкогольной зависимости
                 if (_typeOfAddiction == "Алкогольная")
                 {
                     ExcelDataServis.Save_Report_Excel_Alco(alco);
+                    close = true;
                 }
                 //сформировать отчет по наркозависимости
                 else if (_typeOfAddiction == "Наркотическая")
                 {
                     ExcelDataServis.Save_Report_Excel_Narco(narco);
+                    close = true;
                 }
                 //сформировать отчет по полизависимости
                 else if (_typeOfAddiction == "Полизависимость")
                 {
                     ExcelDataServis.Save_Report_Excel_Poliz(poliz);
+                    close = true;
                 }
-                if (db != null) db.Dispose();
-                Close();
+                if (!close)
+                {
+                    MessageBox.Show("Создайте отчет перед тем как выгрузить в Excel фаил");
+                }
+                else
+                {
+                    if (db != null) db.Dispose();
+                    Close();
+                }
             }
-
             catch (Exception excep)
             {
                 MessageBox.Show(excep.Message);
