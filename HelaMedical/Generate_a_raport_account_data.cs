@@ -11,6 +11,7 @@ namespace HelaMedical
 {
     public class Generate_a_raport_account_data
     {
+
         public static void Generate_a_raport(List<Alco> alco, List<Narcoman> narco, List<Polizavis> poliz, String data, String type)
         {
             try
