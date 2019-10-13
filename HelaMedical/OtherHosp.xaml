@@ -569,140 +569,140 @@
                                   Checked="GomelOblKlinOnkoDis_Checked"
                                   Unchecked="GomelOblKlinOnkoDis_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="14" Background="LightGray">
+                    <Grid Grid.Row="14" >
                         <CheckBox Name="BraginCentrRaionBol" 
                                   Content="УЗ «Брагинская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="BraginCentrRaionBol_Checked"
                                   Unchecked="BraginCentrRaionBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="15">
+                    <Grid Grid.Row="15" Background="LightGray">
                         <CheckBox Name ="Buda_KoshelCentrBol"
                                   Content="УЗ «Буда-Кошелевская  центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="Buda_KoshelCentrBol_Checked"
                                   Unchecked="Buda_KoshelCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="16" Background="LightGray">
+                    <Grid Grid.Row="16" >
                         <CheckBox Name ="VetkovsCentrBol"
                                   Content="УЗ «Ветковская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="VetkovsCentrBol_Checked"
                                   Unchecked="VetkovsCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="17">
+                    <Grid Grid.Row="17" Background="LightGray">
                         <CheckBox Name ="DobrushCentrBol"
                                   Content="УЗ «Добрушская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="DobrushCentrBol_Checked"
                                   Unchecked="DobrushCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="18" Background="LightGray">
+                    <Grid Grid.Row="18">
                         <CheckBox Name ="ElskajaCentrBol"
                                   Content="УЗ «Ельская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="ElskajaCentrBol_Checked"
                                   Unchecked="ElskajaCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="19">
+                    <Grid Grid.Row="19" Background="LightGray">
                         <CheckBox  Name ="ZitkovsCentrBol"
                                    Content="УЗ «Житковичская центральная районная больница»"
                                    Style="{StaticResource CheckBoxLeft}"
                                    Checked="ZitkovsCentrBol_Checked"
                                    Unchecked="ZitkovsCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="20" Background="LightGray">
+                    <Grid Grid.Row="20" >
                         <CheckBox Name ="ZlobiCentrBol"
                                   Content="УЗ «Жлобинская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="ZlobiCentrBol_Checked"
                                   Unchecked="ZlobiCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="21">
+                    <Grid Grid.Row="21" Background="LightGray">
                         <CheckBox Name="KalinkovCentrBol"
                                   Content="УЗ «Калинковичская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="KalinkovCentrBol_Checked"
                                   Unchecked="KalinkovCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="22" Background="LightGray">
+                    <Grid Grid.Row="22">
                         <CheckBox Name="KormjanskCentrBol"
                                   Content ="УЗ «Кормянская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="KormjanskCentrBol_Checked"
                                   Unchecked="KormjanskCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="23">
+                    <Grid Grid.Row="23" Background="LightGray">
                         <CheckBox Name ="LelcicCentrBol"
                                   Content="УЗ «Лельчицкая центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="LelcicCentrBol_Checked"
                                   Unchecked="LelcicCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="24" Background="LightGray">
+                    <Grid Grid.Row="24">
                         <CheckBox Name ="LoevskCentrBol"
                                   Content="УЗ «Лоевская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="LoevskCentrBol_Checked"
                                   Unchecked="LoevskCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="25">
+                    <Grid Grid.Row="25" Background="LightGray">
                         <CheckBox Name ="MozirCentrGorPolic"
                                   Content="ГУЗ «Мозырская центральная городская поликлиника»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="MozirCentrGorPolic_Checked"
                                   Unchecked="MozirCentrGorPolic_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="26" Background="LightGray">
+                    <Grid Grid.Row="26">
                         <CheckBox Name="NarovlCentrBol"
                                   Content="УЗ «Наровлянская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="NarovlCentrBol_Checked"
                                   Unchecked="NarovlCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="27">
+                    <Grid Grid.Row="27" Background="LightGray">
                         <CheckBox Name="OktjabrCentrBol"
                                   Content="УЗ «Октябрьская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="OktjabrCentrBol_Checked"
                                   Unchecked="OktjabrCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="28" Background="LightGray">
+                    <Grid Grid.Row="28">
                         <CheckBox Name="PetrikovCentrBol"
                                   Content="УЗ «Петриковская  центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="PetrikovCentrBol_Checked"
                                   Unchecked="PetrikovCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="29">
+                    <Grid Grid.Row="29" Background="LightGray">
                         <CheckBox Name="RecickajaCentBol"
                                   Content="УЗ «Речицкая центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="RecickajaCentBol_Checked"
                                   Unchecked="RecickajaCentBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="30" Background="LightGray">
+                    <Grid Grid.Row="30">
                         <CheckBox Name="RogacevCentrBol"
                                   Content="УЗ «Рогачевская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="RogacevCentrBol_Checked"
                                   Unchecked="RogacevCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="31">
+                    <Grid Grid.Row="31" Background="LightGray">
                         <CheckBox Name="SvetlagorCentrBol"
                                   Content="УЗ «Светлогорская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="SvetlagorCentrBol_Checked"
                                   Unchecked="SvetlagorCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="32" Background="LightGray">
+                    <Grid Grid.Row="32">
                         <CheckBox Name="HoinikCentrBol"
                                   Content="УЗ «Хойникская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"
                                   Checked="HoinikCentrBol_Checked"
                                   Unchecked="HoinikCentrBol_UnChecked"/>
                     </Grid>
-                    <Grid Grid.Row="33">
+                    <Grid Grid.Row="33" Background="LightGray">
                         <CheckBox Name="CecerskajaCentrBol"
                                   Content="УЗ «Чечерская центральная районная больница»"
                                   Style="{StaticResource CheckBoxLeft}"

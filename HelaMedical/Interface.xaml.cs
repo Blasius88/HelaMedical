@@ -9,15 +9,16 @@ using HelaMedical.Excep;
 
 namespace HelaMedical
 {
+
     /// <summary>
     /// Логика взаимодействия для Interface.xaml
     /// </summary>
     public partial class Interface : Window
     {
-        ApplicationContext db;
-        public List<Alco> alcoFindPerson = new List<Alco>();
-        public List<Narcoman> narcoFindPerson = new List<Narcoman>();
-        public List<Polizavis> polizFindPerson = new List<Polizavis>();
+        private ApplicationContext db;
+        private List<Alco> alcoFindPerson = new List<Alco>();
+        private List<Narcoman> narcoFindPerson = new List<Narcoman>();
+        private List<Polizavis> polizFindPerson = new List<Polizavis>();
         private bool check_alco = false;
         private bool check_narco = false;
         private bool check_poliz = false;
@@ -138,75 +139,88 @@ namespace HelaMedical
         /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string findperson = FindPerson.Text;
-
-            //Очищаем память перед записью новой информации 
-            alcoFindPerson.Clear();
-            narcoFindPerson.Clear();
-            polizFindPerson.Clear();
-
-            DownloadInBD();
-
-            //Ищим инфу в колекциях
-            for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
+            try
             {
-                if (findperson == Alco.AlcoholismPersona[i].FIO)
+                check_alco = false;
+                check_narco = false;
+                check_poliz = false;
+                db = new ApplicationContext();
+                string findperson = FindPerson.Text;
+
+                //Очищаем память перед записью новой информации 
+                alcoFindPerson.Clear();
+                narcoFindPerson.Clear();
+                polizFindPerson.Clear();
+
+                DownloadInBD();
+
+                //Ищим инфу в колекциях
+                for (int i = 0; i < Alco.AlcoholismPersona.Count; i++)
                 {
-                    check_alco = true;
-                    alcoFindPerson.Add(Alco.AlcoholismPersona[i]);
+                    if (findperson == Alco.AlcoholismPersona[i].FIO)
+                    {
+                        check_alco = true;
+                        alcoFindPerson.Add(Alco.AlcoholismPersona[i]);
+                    }
+                }
+
+                for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
+                {
+                    if (findperson == Narcoman.Drug_Addiction[i].FIO)
+                    {
+                        check_narco = true;
+                        narcoFindPerson.Add(Narcoman.Drug_Addiction[i]);
+                    }
+                }
+
+                for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
+                {
+                    if (findperson == Polizavis.Alco_Narco_Person[i].FIO)
+                    {
+                        check_poliz = true;
+                        polizFindPerson.Add(Polizavis.Alco_Narco_Person[i]);
+                    }
+                }
+
+                if (check_alco == true)
+                {
+                    //Выводим инфу на экран 
+                    ListOrder.ItemsSource = alcoFindPerson;
+                }
+                else if (check_narco == true)
+                {
+                    ListOrder.ItemsSource = narcoFindPerson;
+
+                }
+                else if (check_poliz == true)
+                {
+                    ListOrder.ItemsSource = polizFindPerson;
+                }
+
+                else if (check_alco == false && check_narco == false && check_poliz == false)
+                {
+                    if (findperson == "Алкогольная зависимость" || findperson == "алкогольная зависимость" || findperson == "алко")
+                    {
+                        ListOrder.ItemsSource = db.Alcos.Local.ToBindingList();
+                    }
+                    else if (findperson == "Наркотическая зависимость" || findperson == "наркотическая зависимость" || findperson == "нарко")
+                    {
+                        ListOrder.ItemsSource = db.Narcomans.Local.ToBindingList();
+                    }
+                    else if (findperson == "Полизависимость" || findperson == "полизависимость" || findperson == "полиз")
+                    {
+                        ListOrder.ItemsSource = db.Polizaviss.Local.ToBindingList();
+                    }
+                    else
+                        MessageBox.Show("ФИО не найдено");
                 }
             }
-
-            for (int i = 0; i < Narcoman.Drug_Addiction.Count; i++)
+            catch (Exception ex)
             {
-                if (findperson == Narcoman.Drug_Addiction[i].FIO)
-                {
-                    check_narco = true;
-                    narcoFindPerson.Add(Narcoman.Drug_Addiction[i]);
-                }
+                MessageBox.Show(ex.Message);
+                ExcepLog.Excep(ex);
             }
 
-            for (int i = 0; i < Polizavis.Alco_Narco_Person.Count; i++)
-            {
-                if (findperson == Polizavis.Alco_Narco_Person[i].FIO)
-                {
-                    check_poliz = true;
-                    polizFindPerson.Add(Polizavis.Alco_Narco_Person[i]);
-                }
-            }
-
-            if (check_alco == true)
-            {
-                //Выводим инфу на экран 
-                ListOrder.ItemsSource = alcoFindPerson;
-            }
-            else if (check_narco == true)
-            {
-                ListOrder.ItemsSource = narcoFindPerson;
-
-            }
-            else if (check_poliz == true)
-            {
-                ListOrder.ItemsSource = polizFindPerson;
-            }
-
-            else if (check_alco == false && check_narco == false && check_poliz == false)
-            {
-                if (findperson == "Алкогольная зависимость" || findperson == "алкогольная зависимость" || findperson == "алко")
-                {
-                    ListOrder.ItemsSource = db.Alcos.Local.ToBindingList();
-                }
-                else if (findperson == "Наркотическая зависимость" || findperson == "наркотическая зависимость" || findperson == "нарко")
-                {
-                    ListOrder.ItemsSource = db.Narcomans.Local.ToBindingList();
-                }
-                else if (findperson == "Полизависимость" || findperson == "полизависимость" || findperson == "полиз")
-                {
-                    ListOrder.ItemsSource = db.Polizaviss.Local.ToBindingList();
-                }
-                else
-                    MessageBox.Show("ФИО не найдено");
-            }
         }
 
         /// <summary>
@@ -307,21 +321,29 @@ namespace HelaMedical
 
         private void DownloadInBD()
         {
-            Alco.AlcoholismPersona.Clear();
-            Narcoman.Drug_Addiction.Clear();
-            Polizavis.Alco_Narco_Person.Clear();
+            try
+            {
+                Alco.AlcoholismPersona.Clear();
+                Narcoman.Drug_Addiction.Clear();
+                Polizavis.Alco_Narco_Person.Clear();
 
-            foreach (Alco alco in db.Alcos)
-            {
-                Alco.AlcoholismPersona.Add(alco);
+                foreach (Alco alco in db.Alcos)
+                {
+                    Alco.AlcoholismPersona.Add(alco);
+                }
+                foreach (Narcoman narc in db.Narcomans)
+                {
+                    Narcoman.Drug_Addiction.Add(narc);
+                }
+                foreach (Polizavis poli in db.Polizaviss)
+                {
+                    Polizavis.Alco_Narco_Person.Add(poli);
+                }
             }
-            foreach (Narcoman narc in db.Narcomans)
+            catch (Exception ex)
             {
-                Narcoman.Drug_Addiction.Add(narc);
-            }
-            foreach (Polizavis poli in db.Polizaviss)
-            {
-                Polizavis.Alco_Narco_Person.Add(poli);
+                MessageBox.Show(ex.Message);
+                ExcepLog.Excep(ex);
             }
         }
 

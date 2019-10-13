@@ -208,6 +208,14 @@ namespace HelaMedical
                     Date.BorderBrush = Brushes.Red;
                     check = false;
                 }
+                bool data_check = Data_Check(data);
+                if (!data_check)
+                {
+                    Date.BorderThickness = new Thickness(3);
+                    Date.BorderBrush = Brushes.Red;
+                    check = false;
+                }
+
                 string regionCenterBLR = Other.Obl;
                 string raenCenterBLR = Other.Reg;
                 string life = Life.Text;
@@ -366,7 +374,13 @@ namespace HelaMedical
                 if (notSpecifiedEksta == true) EK += "Не уточнено";
 
                 string dateOfDeregistration = DateOfDeregistration.Text;
-
+                bool flag3 = Data_Check(dateOfDeregistration);
+                if (!flag3)
+                {
+                    DateOfDeregistration.BorderThickness = new Thickness(3);
+                    DateOfDeregistration.BorderBrush = Brushes.Red;
+                    check = false;
+                }
 
                 //Данные о смерти
                 string dateOfDead = DateOfDead.Text;
@@ -576,7 +590,8 @@ namespace HelaMedical
                 int aa = 0;
                 if (dataOfRegistration != "")
                 {
-                    try
+                    bool flag1 = Data_Check(dataOfRegistration);
+                    if (flag1)
                     {
                         string[] mas = data.Split('.', ',', '/');
                         string[] mas1 = dataOfRegistration.Split('.', ',', '/');
@@ -584,30 +599,29 @@ namespace HelaMedical
                         int b = Convert.ToInt32(mas1[2]);
                         aa = b - a;
                     }
-                    catch (Exception)
+                    else
                     {
-                        Date.BorderThickness = new Thickness(3);
                         DataOfRegistration.BorderThickness = new Thickness(3);
-                        Date.BorderBrush = Brushes.Red;
                         DataOfRegistration.BorderBrush = Brushes.Red;
                         check = false;
+
                     }
                 }
                 else if (reRegistrationData != "")
                 {
-                    try
+                    bool flag2 = Data_Check(dataOfRegistration);
+                    if (flag2)
                     {
+
                         string[] mas = data.Split('.', ',', '/');
                         string[] mas1 = reRegistrationData.Split('.', ',', '/');
                         int a = Convert.ToInt32(mas[2]);
                         int b = Convert.ToInt32(mas1[2]);
                         aa = b - a;
                     }
-                    catch (Exception)
+                    else
                     {
-                        Date.BorderThickness = new Thickness(3);
                         ReRegistrationData.BorderThickness = new Thickness(3);
-                        Date.BorderBrush = Brushes.Red;
                         ReRegistrationData.BorderBrush = Brushes.Red;
                         check = false;
                     }
@@ -619,33 +633,39 @@ namespace HelaMedical
                 int ab = 0;
                 if (dateOfDead != "")
                 {
-                    try
+                    bool flag_ = Data_Check(dateOfDead);
+                    if (flag_)
                     {
                         string[] mas = data.Split('.', ',', '/');
-                        string[] mas1 = dateOfDead.Split('.', ',', '/' , '(');
+                        string[] mas1 = dateOfDead.Split('.', ',', '/', '(');
                         int a = Convert.ToInt32(mas[2]);
                         int b = Convert.ToInt32(mas1[2]);
                         ab = b - a;
                     }
-                    catch (Exception)
-                    {
-                        Date.BorderThickness = new Thickness(3);
+                    else
+                    { 
                         DateOfDead.BorderThickness = new Thickness(3);
-                        Date.BorderBrush = Brushes.Red;
                         DateOfDead.BorderBrush = Brushes.Red;
                         check = false;
                     }
                 }
 
                 string dataInfo = DataInfo.Text;
-              
+                bool flag = Year_Check(dataInfo);
+                if (!flag)
+                {
+                    check = false;
+                    DataInfo.BorderThickness = new Thickness(3);
+                    DataInfo.BorderBrush = Brushes.Red;
+                }
+
                 AgeOfDead.Text = Convert.ToString(ab);
+
                 string ageOfDead = AgeOfDead.Text;
 
                 if (check == true)
                 {
-                    // Отправляем инфу на дальнейшую обработку 
-
+                 //записываем в бд 
                     DbContexte.Entity.Patient_Сreation_Alco(fio, sex, data, regionCenterBLR, raenCenterBLR, life, age, familyStatus, costOfKids,
                         familyComposition, education, profession, theSkillLevelOfTheProfession, addressOfRegistration,
                         addressAtTheTimeOfDeath, dataOfRegistration, reRegistrationData, typeOfRegistration, heredity,
@@ -658,7 +678,7 @@ namespace HelaMedical
                 }
                 else
                 {
-                    MessageBox.Show("Не все данные введены");
+                    MessageBox.Show("Не все данные введены корректно");
                     return;
                 }
             }
@@ -668,6 +688,60 @@ namespace HelaMedical
                 ExcepLog.Excep(excep);
             }
         }
+
+        public static bool Year_Check(string year)
+        {
+            bool flag = false;
+            try
+            {
+                int yearInt = Convert.ToInt32(year);
+                if (yearInt > 1880 && yearInt < 2030)
+                {
+                    flag = true;
+                }
+            }
+            catch (Exception)
+            {
+                flag = false; 
+            }
+            return flag;
+        }
+
+
+        /// <summary>
+        /// Проверка на корректность ввода данных 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static bool Data_Check(string data)
+        {
+            bool flag = false;
+            try
+            {
+                string[] mas = data.Split('.', ',', '/');
+                int day = Convert.ToInt32(mas[0]);
+                int month = Convert.ToInt32(mas[1]);
+                int year = Convert.ToInt32(mas[2]);
+                //проверяем на правельность ввода данных
+                if (day > 0 && day < 32)
+                {
+                    if (month > 0 && month < 13)
+                    {
+                        if (year > 1880 && year < 2030)
+                        {
+                            flag = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                ExcepLog.Excep(ex);
+            }
+            return flag;
+        }
+
 
         /// <summary>
         /// Другие больницы

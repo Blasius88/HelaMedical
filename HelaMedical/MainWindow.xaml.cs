@@ -5,7 +5,6 @@ using HelaMedical.Class;
 using HelaMedical.Excep;
 using HelaMedical.DbContexte;
 using System.IO;
-using System.Data.SqlClient;
 
 namespace HelaMedical
 {
@@ -40,6 +39,9 @@ namespace HelaMedical
             newPersonal.Show();
         }
 
+        /// <summary>
+        /// Загрузка фаила с сервером 
+        /// </summary>
         public static void FileLoad()
         {
             try
@@ -92,7 +94,6 @@ namespace HelaMedical
                         c = false;
                     }
                 }
-                
                 // если в массиве нет имени 
                 if (c == false)
                 {
@@ -100,7 +101,6 @@ namespace HelaMedical
                     tb.Clear(); // очищает поле логин
                     pass.Clear(); // очищает поле пароль
                 }
-
                 else
                 {
                     Interface iInterface = new Interface();

@@ -305,6 +305,17 @@ namespace HelaMedical
                     Date.BorderBrush = Brushes.Red;
                     check = false;
                 }
+                else
+                {
+                    bool flag = MainDataWindow.Data_Check(data);
+                    if (!flag)
+                    {
+                        Date.BorderThickness = new Thickness(3);
+                        Date.BorderBrush = Brushes.Red;
+                        check = false;
+
+                    }
+                }
                 string regionCenterBLR = Other.Obl;
 
                 string raenCenterBLR = Other.Reg;
@@ -468,6 +479,16 @@ namespace HelaMedical
 
                 //Данные о смерти
                 string dateOfDead = DateOfDead.Text;
+                if (dateOfDead != "")
+                {
+                    bool flag1 = MainDataWindow.Data_Check(dateOfDead);
+                    if (!flag1)
+                    {
+                        DateOfDead.BorderThickness = new Thickness(3);
+                        DateOfDead.BorderBrush = Brushes.Red;
+                        check = false;
+                    }
+                }
                 if (orintirDead == true)
                 {
                     dateOfDead += "(Ориентировачная)";
@@ -707,38 +728,37 @@ namespace HelaMedical
                 int aa = 0;
                 if (dataOfRegistration != "")
                 {
-                    try
-                    {
+                    bool flag2_ = MainDataWindow.Data_Check(dataOfRegistration);
+                    if (flag2_)
+                    { 
+                   
                         string[] mas = data.Split('.', ',', '/');
                         string[] mas1 = dataOfRegistration.Split('.', ',', '/');
                         int a = Convert.ToInt32(mas[2]);
                         int b = Convert.ToInt32(mas1[2]);
                         aa = b - a;
                     }
-                    catch (Exception)
+                    else 
                     {
-                        Date.BorderThickness = new Thickness(3);
                         DataOfRegistration.BorderThickness = new Thickness(3);
-                        Date.BorderBrush = Brushes.Red;
                         DataOfRegistration.BorderBrush = Brushes.Red;
                         check = false;
                     }
                 }
                 else if (reRegistrationData != "")
                 {
-                    try
-                    {
+                    bool flag2_ = MainDataWindow.Data_Check(reRegistrationData);
+                    if (flag2_)
+                    { 
                         string[] mas = data.Split('.', ',', '/');
                         string[] mas1 = reRegistrationData.Split('.', ',', '/');
                         int a = Convert.ToInt32(mas[2]);
                         int b = Convert.ToInt32(mas1[2]);
                         aa = b - a;
                     }
-                    catch (Exception)
+                    else 
                     {
-                        Date.BorderThickness = new Thickness(3);
                         ReRegistrationData.BorderThickness = new Thickness(3);
-                        Date.BorderBrush = Brushes.Red;
                         ReRegistrationData.BorderBrush = Brushes.Red;
                         check = false;
                     }
@@ -750,7 +770,8 @@ namespace HelaMedical
                 int ab = 0;
                 if (dateOfDead != "")
                 {
-                    try
+                    bool flag2_ = MainDataWindow.Data_Check(dateOfDead);
+                    if (flag2_)
                     {
                         string[] mas = data.Split('.', ',', '/');
                         string[] mas1 = dateOfDead.Split('.', ',', '/', '(');
@@ -758,17 +779,22 @@ namespace HelaMedical
                         int b = Convert.ToInt32(mas1[2]);
                         ab = b - a;
                     }
-                    catch (Exception)
+                    else 
                     {
-                        Date.BorderThickness = new Thickness(3);
                         DateOfDead.BorderThickness = new Thickness(3);
-                        Date.BorderBrush = Brushes.Red;
                         DateOfDead.BorderBrush = Brushes.Red;
                         check = false;
                     }
                 }
 
                 string dataInfo = DataInfo.Text;
+                bool flag2 = MainDataWindow.Year_Check(dataInfo);
+                if (!flag2)
+                {
+                    DataInfo.BorderThickness = new Thickness(3);
+                    DataInfo.BorderBrush = Brushes.Red;
+                    check = false;
+                }
 
                 AgeOfDead.Text = Convert.ToString(ab);
                 string ageOfDead = AgeOfDead.Text;
@@ -786,7 +812,7 @@ namespace HelaMedical
                 }
                 else
                 {
-                    MessageBox.Show("Не все данные введены");
+                    MessageBox.Show("Не все данные введены корректно");
                     return;
                 }
         }
