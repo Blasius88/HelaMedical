@@ -215,10 +215,6 @@
     </ApplicationDefinition>
     <Compile Include="DbContexte\DBConection.cs" />
     <Compile Include="DbContexte\Entity.cs" />
-    <Page Include="CreatPersonal.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Generate_A_Report.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -254,9 +250,6 @@
     <Compile Include="Class\Narcoman.cs" />
     <Compile Include="Class\Other.cs" />
     <Compile Include="Class\Polizavis.cs" />
-    <Compile Include="CreatPersonal.xaml.cs">
-      <DependentUpon>CreatPersonal.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DownloadBDAlco.cs" />
     <Compile Include="DownloadDBNarco.cs" />
     <Compile Include="DownloadDBPoliz.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Windows;
+using System.Windows.Input;
 using HelaMedical.Class;
 using HelaMedical.Excep;
 
@@ -28,6 +29,9 @@ namespace HelaMedical
             this.Closing += Generate_A_Report_Closing;
         }
 
+        /// <summary>
+        /// Открывает окно выбора области
+        /// </summary>
         private void Open_OblReg()
         {
             MessageBox.Show("Не выбрали область и регион");
@@ -35,6 +39,12 @@ namespace HelaMedical
             oblReg.Show();
             return;
         }
+
+        /// <summary>
+        /// Закрытие окна и закрытие связей с бд 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Generate_A_Report_Closing(object sender, CancelEventArgs e)
         {
             try
@@ -128,8 +138,6 @@ namespace HelaMedical
         /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ListOrder.ItemsSource = db.Alcos.Local.ToBindingList();
-
             string findperson = FindPerson.Text;
 
             //Очищаем память перед записью новой информации 
@@ -181,12 +189,25 @@ namespace HelaMedical
             {
                 ListOrder.ItemsSource = polizFindPerson;
             }
+
             else if (check_alco == false && check_narco == false && check_poliz == false)
             {
-                MessageBox.Show("ФИО не найдено");
+                if (findperson == "Алкогольная зависимость" || findperson == "алкогольная зависимость" || findperson == "алко")
+                {
+                    ListOrder.ItemsSource = db.Alcos.Local.ToBindingList();
+                }
+                else if (findperson == "Наркотическая зависимость" || findperson == "наркотическая зависимость" || findperson == "нарко")
+                {
+                    ListOrder.ItemsSource = db.Narcomans.Local.ToBindingList();
+                }
+                else if (findperson == "Полизависимость" || findperson == "полизависимость" || findperson == "полиз")
+                {
+                    ListOrder.ItemsSource = db.Polizaviss.Local.ToBindingList();
+                }
+                else
+                    MessageBox.Show("ФИО не найдено");
             }
         }
-
 
         /// <summary>
         /// загружаеи алкоголиков из Excel в бд
@@ -304,6 +325,11 @@ namespace HelaMedical
             }
         }
 
+        /// <summary>
+        /// удалить пациента из БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Delete_Button(object sender, RoutedEventArgs e)
         {
             try
@@ -336,7 +362,6 @@ namespace HelaMedical
                             if (poli != null)
                             {
                                 db.Polizaviss.Remove(poli);
-
                             }
                         }
                     }
@@ -352,6 +377,11 @@ namespace HelaMedical
             }
         }
 
+        /// <summary>
+        /// редактировать пациента 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click_Edit(object sender, RoutedEventArgs e)
         {
             db.SaveChanges();

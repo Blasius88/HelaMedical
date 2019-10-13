@@ -35,27 +35,5 @@ namespace HelaMedical
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-
-        /// <summary>
-        /// Считывает инфу из фаила в буфер для инициализации 
-        /// </summary>
-        public static void ReadInci()
-        {
-            string path = @"\HelaMedical\HelaMedical\File\INC.txt";
-            string s = File.ReadAllText(path);
-            string[] maStrings = s.Split('\r', '\n');
-            foreach (string s1 in maStrings)
-            {
-                if (s1.Length > 2)
-                {
-                    Incitalization person = new Incitalization();
-                    string[] mas = s1.Split('|');
-                    person.Name = mas[0];
-                    person.Pass = mas[1];
-                    person.Pasition = mas[2];
-                    Inci.Add(person);
-                }
-            }
-        }
     }
 }
