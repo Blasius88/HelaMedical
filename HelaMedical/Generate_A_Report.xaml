@@ -196,10 +196,10 @@
                       RowHeaderWidth="50"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" 
+                    <DataGridHyperlinkColumn Header="ID" 
                                     Binding="{Binding Path=Id}"
                                     Width="45"/>
-                    <DataGridTextColumn Header="ФИО" 
+                    <DataGridHyperlinkColumn Header="ФИО" 
                                     Binding="{Binding Path=FIO}"
                                     Width="*"/>
                     <DataGridHyperlinkColumn Header="Возраст"
@@ -211,7 +211,6 @@
                     <DataGridHyperlinkColumn Header="Образование"
                                          Binding="{Binding Path=Education}" 
                                          Width="*"/>
-
                     <DataGridHyperlinkColumn Header="Наркодиагноз"
                                          Binding="{Binding Path=DrugDiagnosisAlc}" 
                                          Width="*"/>

@@ -215,6 +215,7 @@
     </ApplicationDefinition>
     <Compile Include="DbContexte\DBConection.cs" />
     <Compile Include="DbContexte\Entity.cs" />
+    <Compile Include="SortParam.cs" />
     <Page Include="Generate_A_Report.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
